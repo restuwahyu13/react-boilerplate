@@ -34,4 +34,4 @@
 + gunakan **lazy loading** untuk meningkatkan **performance**
 + tambahkan **package** apa saja yang sering digunakan ke **vendors** untuk pemisahan antara **code asli** dan **package** pihak ketiga, **digunakan ketika production**
 + gunakan extension **eslint, prettier, editorconfig dan stylelint** agar config bisa berjalan dengan mulus
-+ jika ingin menggunakan feature yang lebih komplek untuk **PWA** bisa menggunakan  **InjectManifest** pada **Workbox Webpack Plugin**
++ jika ingin menggunakan fiture yang lebih komplek untuk **PWA** bisa menggunakan  **InjectManifest** pada **Workbox Webpack Plugin**
