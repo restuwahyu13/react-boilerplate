@@ -1,0 +1,55 @@
+{
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"codeFrame": false
+	},
+	"extends": [
+		"eslint:recommended",
+		"airbnb",
+		"airbnb/hooks",
+		"prettier",
+		"plugin:prettier/recommended",
+		"plugin:security/recommended",
+		"plugin:react-redux/recommended"
+	],
+	"plugins": ["prettier", "react", "react-hooks", "import", "jsx-a11y", "security", "react-redux"],
+	"rules": {
+		"prettier/prettier": 2,
+		"semi": 0,
+		"strict": 1,
+		"no-var": 1,
+		"prefer-template": 2,
+		"no-duplicate-imports": 2,
+		"import/no-extraneous-dependencies": [0, { "devDependencies": false }],
+		"semi-spacing": [1, { "before": false, "after": true }],
+		"no-multi-assign": 2,
+		"brace-style": 2,
+		"import/no-dynamic-require": 0,
+		"global-require": 0,
+		"import/order": 0,
+		"comma-dangle": 0,
+		"react/jsx-boolean-value": 1,
+		"react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+		"react/require-optimization": 1,
+		"react/prefer-stateless-function": 1,
+		"react/jsx-max-depth": 0,
+		"react/jsx-closing-tag-location": 2,
+		"react/no-typos": 2,
+		"react/no-render-return-value": 0,
+		"security/detect-non-literal-require": 0,
+		"max-depth": 0,
+		"react/jsx-no-target-blank": 0,
+		"react/jsx-indent": 0,
+		"react/jsx-one-expression-per-line": 0,
+		"security/detect-non-literal-fs-filename": 0
+	},
+	"env": {
+		"browser": true,
+		"node": true
+	}
+}

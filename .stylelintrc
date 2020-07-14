@@ -1,0 +1,50 @@
+{
+	"ignoreFiles": [
+		"src/**/*.js",
+		"node_modules"
+	],
+	"extends": [
+		"stylelint-config-recommended",
+		"stylelint-config-recommended-scss"
+	],
+	"plugins": [
+		"stylelint-scss",
+		"stylelint-csstree-validator",
+		"stylelint-images"
+	],
+	"rules": {
+		"images/broken": true,
+		"images/prefer-data-uri": 256,
+		"csstree/validator": true,
+		"indentation": "tab",
+		"max-empty-lines": 2,
+		"font-family-no-duplicate-names": true,
+		"function-calc-no-invalid": true,
+		"keyframe-declaration-no-important": null,
+		"declaration-no-important": null,
+		"declaration-block-single-line-max-declarations": 1,
+		"declaration-block-no-duplicate-properties": true,
+		"block-no-empty": true,
+		"comment-no-empty": true,
+		"no-duplicate-at-import-rules": true,
+		"no-duplicate-selectors": true,
+		"no-extra-semicolons": true,
+		"number-no-trailing-zeros": true,
+		"string-no-newline": true,
+		"unit-no-unknown": true,
+		"property-no-unknown": true,
+		"media-feature-name-no-unknown": true,
+		"font-weight-notation": null,
+		"number-leading-zero": "always",
+		"color-function-notation": "legacy",
+		"at-rule-name-case": "lower",
+		"media-feature-name-case": "lower",
+		"selector-pseudo-class-case": "lower",
+		"selector-pseudo-element-case": "lower",
+		"selector-type-case": "lower",
+		"property-case": "lower",
+		"value-keyword-case": "lower",
+		"color-hex-case": "lower",
+		"color-hex-length": "short"
+	}
+}

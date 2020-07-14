@@ -1,0 +1,27 @@
+{
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"useBuiltIns": "usage",
+				"corejs": 3,
+				"loose": true,
+				"bugfixes": true,
+				"targets": {
+					"esmodules": true
+				},
+				"modules": false,
+				"debug": false
+			}
+		],
+		["@babel/preset-react", { "useBuiltIns": true }]
+	],
+	"plugins": [
+		"@babel/plugin-transform-async-to-generator",
+		"@babel/plugin-syntax-dynamic-import",
+		["@babel/plugin-transform-modules-commonjs", { "loose": true }],
+		["@babel/plugin-transform-runtime", { "corejs": 3, "useESModules": true }],
+		["@babel/plugin-proposal-class-properties", { "loose": true }],
+		["react-hot-loader/babel", { "safetyNet": true }]
+	]
+}

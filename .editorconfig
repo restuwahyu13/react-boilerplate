@@ -1,0 +1,30 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js, jsx, html, css}]
+charset = utf-8
+
+# tab indentation javascript and typescript
+[*.{js, jsx}]
+indent_style = tab
+indent_size = 3
+
+# tab indentation html and css
+[*.{html, css}]
+indent_style = tab
+indent_size = 2
+
+# tab_width space javascript and typescript
+# [*.{js, jsx}]
+# tab_width = 3
+
+# tab_width space javascript and typescript
+# [*.{html, css}]
+# tab_width = 2
