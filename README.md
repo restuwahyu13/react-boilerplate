@@ -32,6 +32,6 @@
 #### Tips
 
 + gunakan **lazy loading** untuk meningkatkan **performance**
-+ tambahkan **perpustakaan package react** apa saja yang sering digunakan ke **vendors**, untuk memisahkan kode asli dari **package perpustakaan** yang digunakan oleh **react** berlaku hanya untuk **production**
++ tambahkan **perpustakaan package react** apa saja yang sering digunakan ke **vendors**, untuk memisahkan antara kode asli dan **package perpustakaan** yang digunakan oleh **react** berlaku hanya untuk **production**
 + gunakan extension **eslint, prettier, editorconfig dan stylelint** agar config bisa berjalan dengan mulus
 + jika ingin menggunakan fiture yang lebih komplek untuk **PWA** bisa menggunakan  **InjectManifest** pada **Workbox Webpack Plugin**
