@@ -12,6 +12,7 @@
 + Testing React Component - **npm run t**
 
 #### Features
++	[x] Support REACT HMR & CSS HMR
 +	[x] Support Proggresive Web Apps (PWA)
 +	[x] Support SASS Preprocessor CSS
 +	[x] Support Dynamic Import & Lazy Loading
