@@ -46,11 +46,11 @@ module.exports = {
 				],
 			},
 			{
-				test: /\.(jp?g|png|svg|gif|raw|webp|tiff)$/,
+				test: /\.(jp?g|png|svg|gif|raw|webp)$/,
 				use: {
 					loader: 'url-loader',
 					options: {
-						name: 'static/images/[name].[contenthash:10].[ext]',
+						name: 'images/[name].[contenthash:10].[ext]',
 						limit: 10240,
 					},
 				},
@@ -60,11 +60,42 @@ module.exports = {
 				use: {
 					loader: 'url-loader',
 					options: {
-						name: 'static/fonts/[name].[contenthash:10].[ext]',
+						name: '[name].[contenthash:10].[ext]',
 						limit: 10240,
 					},
 				},
 			},
+			{
+			test: /\.(jp?g|png|svg|gif|raw|webp)$/,
+ 				use: {
+ 					loader: 'image-webpack-loader',
+ 					options: {
+ 						mozjpeg: {
+ 							progressive: true,
+ 							quality: 75,
+ 							smooth: 75,
+ 						},
+ 						optipng: {
+ 							enabled: true,
+ 							optimizationLevel: 5,
+ 						},
+ 						pngquant: {
+ 							quality: [0.5, 0.75],
+ 							speed: 11,
+ 						},
+ 						gifsicle: {
+ 							interlaced: false,
+ 							optimizationLevel: 3,
+ 						},
+ 						webp: {
+ 							quality: 75,
+ 							method: 5,
+ 							autoFilter: true,
+ 						},
+ 					},
+ 				},
+ 				enforce: 'pre',
+ 			},
 		],
 	},
 	plugins: [
@@ -110,13 +141,13 @@ module.exports = {
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 30,
+							maxAgeSeconds: 24 * 60 * 60 * 90,
 						},
 					},
 				},
 				{
 					handler: 'CacheFirst',
-					urlPattern: /\.(?:jp?g|png|svg|gif|raw|webp|tiff|ico)$/,
+					urlPattern: /\.(?:jp?g|png|svg|gif|raw|webp)$/,
 					options: {
 						cacheName: 'images-assets-cache',
 						cacheableResponse: {
@@ -124,7 +155,7 @@ module.exports = {
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 30,
+							maxAgeSeconds: 24 * 60 * 60 * 180,
 						},
 					},
 				},
@@ -138,7 +169,7 @@ module.exports = {
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 30,
+							maxAgeSeconds: 24 * 60 * 60 * 180,
 						},
 					},
 				},
@@ -159,7 +190,7 @@ module.exports = {
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
-			test: /\.(jp?g|png|svg|gif|raw|webp|tiff)$/,
+			test: /\.(jp?g|png|svg|gif|raw|webp)$/,
 			algorithm: 'brotliCompress',
 			compressionOptions: {
 				level: zlib.constants.Z_BEST_COMPRESSION,
@@ -179,6 +210,7 @@ module.exports = {
 		}),
 	],
 	optimization: {
+		runtimeChunk: 'single',
 		minimize: true,
 		minimizer: [
 			new TenserWebpackPlugin({
@@ -214,6 +246,13 @@ module.exports = {
 				},
 			},
 		},
+	},
+	stats: {
+		assetsSort: '!size',
+		entrypoints: false,
+		cached: false,
+		children: false,
+		modules: false,
 	},
 	devtool: 'source-map',
 }

@@ -41,8 +41,6 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: resolve(process.cwd(), 'public/index.html'),
 			inject: true,
 		}),
 		new FixStyleOnlyEntriesPlugin(),
@@ -90,20 +88,10 @@ module.exports = {
 			defaultAttribute: 'async',
 		}),
 	],
-	optimization: {
-		runtimeChunk: 'single',
-	},
 	resolve: {
 		extensions: ['*', '.js', '.jsx', '.json'],
 		symlinks: false,
 		cacheWithContext: false,
-	},
-	stats: {
-		assetsSort: '!size',
-		entrypoints: false,
-		cached: false,
-		children: false,
-		modules: false,
 	},
 	node: {
 		global: false,

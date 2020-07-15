@@ -1,6 +1,6 @@
 ### Modern React Boilerplate 2020
 
-**Berikut** adalah **React Boilerplate** yang sudah siap pakai yang terintegrasi dengan beberapa tools **Front-End** populer khususnya untuk **React Developer** dan bisa di **customisasi** sesuai dengan selera masing - masing bagi siapa saja  yang mau menggunakannya, dikarenakan dari masing - masing orang mungkin ingin mempunyai standar **customisasi** nya sendiri sesuai dengan keinginannya, untuk demonya bisa klik disini [Moden React Boilerplate](https://bit.ly/306feZy).
+**Berikut** adalah **React Boilerplate** yang sudah siap pakai yang terintegrasi dengan beberapa tools **Front-End** populer khususnya untuk **React Developer** dan bisa di **customisasi** sesuai dengan selera masing - masing bagi siapa saja  yang mau menggunakannya, dikarenakan dari masing - masing orang mungkin ingin mempunyai standar **customisasi** nya sendiri sesuai dengan keinginannya, untuk demonya bisa klik disini [Moden React Boilerplate](https://bit.ly/30dghql).
 
 <img src="https://i.imgur.com/pQYU9Fe.png" width="512" height="320" alt="logo-react" style="position:relative; margin: auto; padding:10px">
 

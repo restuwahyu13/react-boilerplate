@@ -1,6 +1,7 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
 const { WebpackLogCompiler } = require('./addons/webpack.log')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 	mode: 'development',
@@ -11,7 +12,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
+				test: /\.(css|scss|sass)$/,
 				use: [
 					'css-hot-loader',
 					{
@@ -28,12 +29,12 @@ module.exports = {
 				],
 			},
 			{
-				test: /\.(jpe?g|gif|png|svg|ico)$/,
+				test: /\.(jp?g|png|svg|gif|raw|webp)$/,
 				use: [
 					{
 						loader: 'file-loader',
 						options: {
-							name: '[path][name].[ext]',
+							name: '[name].[ext]',
 							limit: 10240,
 						},
 					},
@@ -45,7 +46,7 @@ module.exports = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: '[path][name].[ext]',
+							name: '[name].[ext]',
 							limit: 10240,
 						},
 					},
@@ -57,6 +58,9 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('development'),
+		}),
+		new HtmlWebpackPlugin({
+			template: resolve(process.cwd(), 'public/index.html'),
 		}),
 		new WebpackLogCompiler({
 			env: 'development',
@@ -71,13 +75,6 @@ module.exports = {
 	optimization: {
 		splitChunks: {
 			cacheGroups: {
-				styles: {
-					name: 'styles',
-					test: /\.css$/,
-					chunks: 'all',
-					enforce: true,
-					reuseExistingChunk: false,
-				},
 				vendors: {
 					name: 'vendors',
 					test: /\.js$/,
@@ -89,15 +86,14 @@ module.exports = {
 		},
 	},
 	devServer: {
-		port: process.env.PORT || 3000,
+		open: true,
 		compress: true,
 		hot: true,
 		inline: true,
-		open: true,
+		watchContentBase: true,
+		port: process.env.PORT || 3000,
 		contentBase: resolve(process.cwd(), 'build'),
-		liveReload: false,
-		stats: 'none',
+		liveReload: false
 	},
 	devtool: 'inline-source-map',
-	stats: 'errors-warnings',
 }
