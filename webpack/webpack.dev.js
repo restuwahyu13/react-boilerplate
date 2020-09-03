@@ -93,7 +93,7 @@ module.exports = {
 		watchContentBase: true,
 		historyApiFallback: true,
 		contentBase: resolve(process.cwd(), 'build'),
-		port: process.env.PORT,
+		port: process.env.PORT || 3000,
 		liveReload: false,
 	},
 	devtool: 'inline-source-map',

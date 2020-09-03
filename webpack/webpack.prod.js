@@ -15,7 +15,7 @@ module.exports = {
 	output: {
 		filename: 'static/js/[name].[contenthash:10].bundle.js',
 		chunkFilename: 'static/js/[name].[contenthash:10].chunk.js',
-		pathinfo: false,
+		pathinfo: false
 	},
 	module: {
 		rules: [
@@ -27,20 +27,20 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							importLoaders: 2,
-							sourceMap: true,
-						},
+							sourceMap: true
+						}
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
 							ident: 'postcss',
 							config: {
-								path: resolve(process.cwd(), 'postcss.config.js'),
+								path: resolve(process.cwd(), 'postcss.config.js')
 							},
-							sourceMap: true,
-						},
-					},
-				],
+							sourceMap: true
+						}
+					}
+				]
 			},
 			{
 				test: /\.(jp?g|png|svg|gif|raw|webp)$/,
@@ -48,9 +48,9 @@ module.exports = {
 					loader: 'url-loader',
 					options: {
 						name: 'images/[name].[contenthash:10].[ext]',
-						limit: 10240,
-					},
-				},
+						limit: 10240
+					}
+				}
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -58,9 +58,9 @@ module.exports = {
 					loader: 'url-loader',
 					options: {
 						name: '[name].[contenthash:10].[ext]',
-						limit: 10240,
-					},
-				},
+						limit: 10240
+					}
+				}
 			},
 			{
 				test: /\.(jp?g|png|svg|gif|raw|webp)$/,
@@ -70,37 +70,37 @@ module.exports = {
 						mozjpeg: {
 							progressive: true,
 							quality: 75,
-							smooth: 75,
+							smooth: 75
 						},
 						optipng: {
 							enabled: true,
-							optimizationLevel: 5,
+							optimizationLevel: 5
 						},
 						pngquant: {
 							quality: [0.5, 0.75],
-							speed: 11,
+							speed: 11
 						},
 						gifsicle: {
 							interlaced: false,
-							optimizationLevel: 3,
+							optimizationLevel: 3
 						},
 						webp: {
 							quality: 75,
 							method: 5,
-							autoFilter: true,
-						},
-					},
+							autoFilter: true
+						}
+					}
 				},
-				enforce: 'pre',
-			},
-		],
+				enforce: 'pre'
+			}
+		]
 	},
 	plugins: [
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production'),
+			'process.env.NODE_ENV': JSON.stringify('production')
 		}),
 		new CleanWebpackPlugin({
-			cleanAfterEveryBuildPatterns: ['build'],
+			cleanAfterEveryBuildPatterns: ['build']
 		}),
 		new HtmlWebpackPlugin({
 			template: resolve(process.cwd(), 'public/index.html'),
@@ -117,13 +117,13 @@ module.exports = {
 				collapseInlineTagWhitespace: true,
 				minifyJS: true,
 				minifyCSS: true,
-				minifyURLs: true,
-			},
+				minifyURLs: true
+			}
 		}),
 		new ThreeShakingWebpackPlugin(),
 		new MiniCssExtractPlugin({
 			filename: 'static/css/[name].[contenthash:10].bundle.css',
-			chunkFilename: 'static/css/[name].[contenthash:10].chunk.css',
+			chunkFilename: 'static/css/[name].[contenthash:10].chunk.css'
 		}),
 		new GenerateSW({
 			swDest: resolve(process.cwd(), 'build/service-worker.js'),
@@ -134,13 +134,13 @@ module.exports = {
 					options: {
 						cacheName: 'static-assets-cache',
 						cacheableResponse: {
-							statuses: [0, 200],
+							statuses: [0, 200]
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 60,
-						},
-					},
+							maxAgeSeconds: 24 * 60 * 60 * 60
+						}
+					}
 				},
 				{
 					handler: 'CacheFirst',
@@ -148,13 +148,13 @@ module.exports = {
 					options: {
 						cacheName: 'images-assets-cache',
 						cacheableResponse: {
-							statuses: [200],
+							statuses: [200]
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 180,
-						},
-					},
+							maxAgeSeconds: 24 * 60 * 60 * 180
+						}
+					}
 				},
 				{
 					handler: 'CacheFirst',
@@ -162,18 +162,18 @@ module.exports = {
 					options: {
 						cacheName: 'fonts-assets-cache',
 						cacheableResponse: {
-							statuses: [200],
+							statuses: [200]
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 180,
-						},
-					},
-				},
+							maxAgeSeconds: 24 * 60 * 60 * 180
+						}
+					}
+				}
 			],
 			clientsClaim: true,
 			skipWaiting: true,
-			cleanupOutdatedCaches: true,
+			cleanupOutdatedCaches: true
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -181,9 +181,9 @@ module.exports = {
 			algorithm: 'brotliCompress',
 			compressionOptions: {
 				level: zlib.constants.Z_BEST_COMPRESSION,
-				strategy: zlib.constants.Z_RLE,
+				strategy: zlib.constants.Z_RLE
 			},
-			exclude: ['/build/', /node_modules/],
+			exclude: ['/build/', /node_modules/]
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -191,9 +191,9 @@ module.exports = {
 			algorithm: 'brotliCompress',
 			compressionOptions: {
 				level: zlib.constants.Z_BEST_COMPRESSION,
-				strategy: zlib.constants.Z_RLE,
+				strategy: zlib.constants.Z_RLE
 			},
-			exclude: ['/build/', /node_modules/],
+			exclude: ['/build/', /node_modules/]
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -201,10 +201,10 @@ module.exports = {
 			algorithm: 'brotliCompress',
 			compressionOptions: {
 				level: zlib.constants.Z_BEST_COMPRESSION,
-				strategy: zlib.constants.Z_RLE,
+				strategy: zlib.constants.Z_RLE
 			},
-			exclude: ['/build/', /node_modules/],
-		}),
+			exclude: ['/build/', /node_modules/]
+		})
 	],
 	optimization: {
 		runtimeChunk: 'single',
@@ -219,47 +219,47 @@ module.exports = {
 					output: { comments: false, preserve_annotations: true, braces: true, indent_level: 2 },
 					keep_classnames: true,
 					keep_fnames: true,
-					safari10: true,
+					safari10: true
 				},
 				parallel: require('os').cpus().length,
 				extractComments: false,
-				sourceMap: true,
+				sourceMap: true
 			}),
 			new OptimizeCssAssetsPlugin({
 				cssProcessor: require('cssnano'),
 				cssProcessorPluginOptions: {
 					preset: [
 						'advanced',
-						{ discardComments: { removeAll: true }, convertValues: { precision: true } },
-					],
-				},
-			}),
+						{ discardComments: { removeAll: true }, convertValues: { precision: true } }
+					]
+				}
+			})
 		],
 		splitChunks: {
 			cacheGroups: {
 				vendors: {
 					name: false,
-					test: /[\\/]node_modules[\\/]/,
+					test: /\.js$/,
 					chunks: 'all',
 					enforce: true,
-					reuseExistingChunk: false,
+					reuseExistingChunk: false
 				},
 				styles: {
 					name: false,
 					test: /\.(css|sass|scss)$/,
 					chunks: 'all',
 					enforce: true,
-					reuseExistingChunk: true,
-				},
-			},
-		},
+					reuseExistingChunk: true
+				}
+			}
+		}
 	},
 	stats: {
 		assetsSort: '!size',
 		entrypoints: false,
 		cached: false,
 		children: false,
-		modules: false,
+		modules: false
 	},
-	devtool: 'source-map',
+	devtool: 'source-map'
 }
