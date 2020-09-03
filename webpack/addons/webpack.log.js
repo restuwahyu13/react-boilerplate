@@ -6,7 +6,9 @@ class WebpackLogCompiler {
 	}
 
 	apply(compiler) {
-		return this.options.mode !== 'production' ? this.devCompile(compiler) : this.prodCompile(compiler)
+		return this.options.mode !== 'production'
+			? this.devCompile(compiler)
+			: this.prodCompile(compiler)
 	}
 
 	devCompile(compiler) {

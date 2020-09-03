@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
+const DotEnv = require('dotenv-webpack')
 
 module.exports = {
 	target: 'web',
@@ -40,6 +41,11 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new DotEnv({
+			path: resolve(process.cwd(), '.env'),
+			expand: true,
+			systemvars: true,
+		}),
 		new HtmlWebpackPlugin({
 			inject: true,
 		}),

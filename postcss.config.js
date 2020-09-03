@@ -22,7 +22,10 @@ module.exports = {
 			autoprefixer: { grid: 'autoplace', flexbox: 'no-2009' },
 		}),
 		postcssNano({
-			preset: ['advanced', { discardComments: { removeAll: true }, convertValues: { precision: true } }],
+			preset: [
+				'advanced',
+				{ discardComments: { removeAll: true }, convertValues: { precision: true } },
+			],
 		}),
 		postcssStyleLint({
 			fix: true,

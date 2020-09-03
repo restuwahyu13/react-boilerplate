@@ -12,9 +12,6 @@ const ThreeShakingWebpackPlugin = require('webpack-common-shake').Plugin
 
 module.exports = {
 	mode: 'production',
-	entry: {
-		vendors: resolve(process.cwd(), 'vendors/vendors.js'),
-	},
 	output: {
 		filename: 'static/js/[name].[contenthash:10].bundle.js',
 		chunkFilename: 'static/js/[name].[contenthash:10].chunk.js',
@@ -66,36 +63,36 @@ module.exports = {
 				},
 			},
 			{
-			test: /\.(jp?g|png|svg|gif|raw|webp)$/,
- 				use: {
- 					loader: 'image-webpack-loader',
- 					options: {
- 						mozjpeg: {
- 							progressive: true,
- 							quality: 75,
- 							smooth: 75,
- 						},
- 						optipng: {
- 							enabled: true,
- 							optimizationLevel: 5,
- 						},
- 						pngquant: {
- 							quality: [0.5, 0.75],
- 							speed: 11,
- 						},
- 						gifsicle: {
- 							interlaced: false,
- 							optimizationLevel: 3,
- 						},
- 						webp: {
- 							quality: 75,
- 							method: 5,
- 							autoFilter: true,
- 						},
- 					},
- 				},
- 				enforce: 'pre',
- 			},
+				test: /\.(jp?g|png|svg|gif|raw|webp)$/,
+				use: {
+					loader: 'image-webpack-loader',
+					options: {
+						mozjpeg: {
+							progressive: true,
+							quality: 75,
+							smooth: 75,
+						},
+						optipng: {
+							enabled: true,
+							optimizationLevel: 5,
+						},
+						pngquant: {
+							quality: [0.5, 0.75],
+							speed: 11,
+						},
+						gifsicle: {
+							interlaced: false,
+							optimizationLevel: 3,
+						},
+						webp: {
+							quality: 75,
+							method: 5,
+							autoFilter: true,
+						},
+					},
+				},
+				enforce: 'pre',
+			},
 		],
 	},
 	plugins: [
@@ -133,7 +130,7 @@ module.exports = {
 			runtimeCaching: [
 				{
 					handler: 'StaleWhileRevalidate',
-					urlPattern: /\.(?:js|css|html|json)$/,
+					urlPattern: /\.(?:js|css|html)$/,
 					options: {
 						cacheName: 'static-assets-cache',
 						cacheableResponse: {
@@ -141,7 +138,7 @@ module.exports = {
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 90,
+							maxAgeSeconds: 24 * 60 * 60 * 60,
 						},
 					},
 				},
@@ -186,7 +183,7 @@ module.exports = {
 				level: zlib.constants.Z_BEST_COMPRESSION,
 				strategy: zlib.constants.Z_RLE,
 			},
-			exclude: /node_modules/,
+			exclude: ['/build/', /node_modules/],
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -196,7 +193,7 @@ module.exports = {
 				level: zlib.constants.Z_BEST_COMPRESSION,
 				strategy: zlib.constants.Z_RLE,
 			},
-			exclude: /node_modules/,
+			exclude: ['/build/', /node_modules/],
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -206,7 +203,7 @@ module.exports = {
 				level: zlib.constants.Z_BEST_COMPRESSION,
 				strategy: zlib.constants.Z_RLE,
 			},
-			exclude: /node_modules/,
+			exclude: ['/build/', /node_modules/],
 		}),
 	],
 	optimization: {
@@ -216,7 +213,7 @@ module.exports = {
 			new TenserWebpackPlugin({
 				test: /\.(js|jsx)$/,
 				terserOptions: {
-					parser: { ecma: 7, bare_returns: true, html5_comments: false },
+					parser: { ecma: 8, bare_returns: true, html5_comments: false },
 					compress: { module: true, inline: 1 },
 					mangle: { module: true, toplevel: true },
 					output: { comments: false, preserve_annotations: true, braces: true, indent_level: 2 },
@@ -231,7 +228,10 @@ module.exports = {
 			new OptimizeCssAssetsPlugin({
 				cssProcessor: require('cssnano'),
 				cssProcessorPluginOptions: {
-					preset: ['advanced', { discardComments: { removeAll: true }, convertValues: { precision: true } }],
+					preset: [
+						'advanced',
+						{ discardComments: { removeAll: true }, convertValues: { precision: true } },
+					],
 				},
 			}),
 		],
@@ -239,10 +239,17 @@ module.exports = {
 			cacheGroups: {
 				vendors: {
 					name: false,
-					test: /\.js$/,
+					test: /[\\/]node_modules[\\/]/,
 					chunks: 'all',
 					enforce: true,
 					reuseExistingChunk: false,
+				},
+				styles: {
+					name: false,
+					test: /\.(css|sass|scss)$/,
+					chunks: 'all',
+					enforce: true,
+					reuseExistingChunk: true,
 				},
 			},
 		},

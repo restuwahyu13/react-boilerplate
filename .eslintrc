@@ -46,7 +46,9 @@
 		"react/jsx-no-target-blank": 0,
 		"react/jsx-indent": 0,
 		"react/jsx-one-expression-per-line": 0,
-		"security/detect-non-literal-fs-filename": 0
+		"security/detect-non-literal-fs-filename": 0,
+		"react/jsx-indent-props": 0,
+		"react/jsx-closing-bracket-location": 0
 	},
 	"env": {
 		"browser": true,

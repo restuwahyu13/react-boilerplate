@@ -1,4 +1,4 @@
-/** 
+/**
 @description  this file is entrypoint react-application and webpack
 */
 import React from 'react'
@@ -7,13 +7,13 @@ import { hot } from 'react-hot-loader/root'
 import './assets/css/index.css'
 import App from './App'
 
-/** 
-@description  on HotReload if environment is development mode
+/**
+@description on HotReload if environment is development mode
 */
-const RenderComponent = (Component) => render(<Component />, document.getElementById('root'))
-RenderComponent(hot(App))
+const RootComponent = (Component) => render(<Component />, document.getElementById('root'))
+RootComponent(hot(App))
 
-/** 
+/**
 @description on serviceWorker if environment is production mode
 */
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in window.navigator) {

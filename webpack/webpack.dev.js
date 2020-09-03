@@ -91,9 +91,10 @@ module.exports = {
 		hot: true,
 		inline: true,
 		watchContentBase: true,
-		port: process.env.PORT || 3000,
+		historyApiFallback: true,
 		contentBase: resolve(process.cwd(), 'build'),
-		liveReload: false
+		port: process.env.PORT,
+		liveReload: false,
 	},
 	devtool: 'inline-source-map',
 }
