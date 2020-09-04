@@ -23,8 +23,10 @@
 	"license": "MIT",
 	"dependencies": {
 		"@loadable/component": "^5.13.1",
+		"@types/http-proxy-middleware": "^0.19.3",
 		"axios": "^0.19.2",
 		"core-js": "^3.6.5",
+		"http-proxy-middleware": "^1.0.5",
 		"prop-types": "^15.7.2",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",

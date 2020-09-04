@@ -17,27 +17,27 @@ module.exports = {
 			features: {
 				'nesting-rules': true,
 				'media-query-ranges': true,
-				'color-mod-function': true,
+				'color-mod-function': true
 			},
-			autoprefixer: { grid: 'autoplace', flexbox: 'no-2009' },
+			autoprefixer: { grid: 'autoplace', flexbox: 'no-2009' }
 		}),
 		postcssNano({
 			preset: [
 				'advanced',
-				{ discardComments: { removeAll: true }, convertValues: { precision: true } },
-			],
+				{ discardComments: { removeAll: true }, convertValues: { precision: true } }
+			]
 		}),
 		postcssStyleLint({
 			fix: true,
-			configFile: path.resolve(__dirname, '.stylelintrc'),
+			configFile: path.resolve(__dirname, '.stylelintrc')
 		}),
 		postcssClean({
 			format: 'beautify',
 			level: {
 				2: {
-					all: true,
-				},
-			},
-		}),
-	],
+					all: true
+				}
+			}
+		})
+	]
 }

@@ -130,7 +130,7 @@ module.exports = {
 			runtimeCaching: [
 				{
 					handler: 'StaleWhileRevalidate',
-					urlPattern: /\.(?:js|css|html)$/,
+					urlPattern: /\.(?:js|css|html|json)$/,
 					options: {
 						cacheName: 'static-assets-cache',
 						cacheableResponse: {
@@ -148,11 +148,11 @@ module.exports = {
 					options: {
 						cacheName: 'images-assets-cache',
 						cacheableResponse: {
-							statuses: [200]
+							statuses: [0, 200]
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 180
+							maxAgeSeconds: 24 * 60 * 60 * 60
 						}
 					}
 				},
@@ -162,18 +162,19 @@ module.exports = {
 					options: {
 						cacheName: 'fonts-assets-cache',
 						cacheableResponse: {
-							statuses: [200]
+							statuses: [0, 200]
 						},
 						expiration: {
 							maxEntries: 100,
-							maxAgeSeconds: 24 * 60 * 60 * 180
+							maxAgeSeconds: 24 * 60 * 60 * 60
 						}
 					}
 				}
 			],
 			clientsClaim: true,
 			skipWaiting: true,
-			cleanupOutdatedCaches: true
+			cleanupOutdatedCaches: true,
+			maximumFileSizeToCacheInBytes: 1572864
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -183,7 +184,7 @@ module.exports = {
 				level: zlib.constants.Z_BEST_COMPRESSION,
 				strategy: zlib.constants.Z_RLE
 			},
-			exclude: ['/build/', /node_modules/]
+			exclude: ['build', 'node_modules']
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -193,7 +194,7 @@ module.exports = {
 				level: zlib.constants.Z_BEST_COMPRESSION,
 				strategy: zlib.constants.Z_RLE
 			},
-			exclude: ['/build/', /node_modules/]
+			exclude: ['build', 'node_modules']
 		}),
 		new CompressionPlugin({
 			filename: '[path].br[query]',
@@ -203,7 +204,7 @@ module.exports = {
 				level: zlib.constants.Z_BEST_COMPRESSION,
 				strategy: zlib.constants.Z_RLE
 			},
-			exclude: ['/build/', /node_modules/]
+			exclude: ['build', 'node_modules']
 		})
 	],
 	optimization: {
