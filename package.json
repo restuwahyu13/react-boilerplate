@@ -92,7 +92,7 @@
 		"stylelint-csstree-validator": "^1.8.0",
 		"stylelint-images": "^2.0.1",
 		"stylelint-scss": "^3.18.0",
-		"terser-webpack-plugin": "^3.0.7",
+		"terser-webpack-plugin": "^4.1.0",
 		"url-loader": "^4.1.0",
 		"webpack": "^4.43.0",
 		"webpack-bundle-analyzer": "^3.8.0",
