@@ -41,4 +41,4 @@
 
 ### LICENSE
 
-- **[MIT](https://github.com/restuwahyu13/react-boilerplate/LICENSE.md)**
+- **[MIT](https://github.com/restuwahyu13/react-boilerplate/blob/master/LICENSE.md)**
