@@ -1,8 +1,10 @@
 ### Minimalize Modern React Boilerplate 2020
 
-**Berikut** adalah **React Boilerplate** yang sudah siap pakai yang terintegrasi dengan beberapa tools **Front-End** populer khususnya untuk **React Developer** dan bisa di **customisasi** sesuai dengan selera masing - masing bagi siapa saja yang mau menggunakannya, dikarenakan dari masing - masing orang mungkin ingin mempunyai standar **customisasi** nya sendiri sesuai dengan keinginannya, untuk demonya bisa klik disini [Moden React Boilerplate](https://bit.ly/30dghql).
+**Berikut** adalah **React Boilerplate** yang sudah siap pakai untuk **Production** atau **Development** yang sudah terintegrasi dengan beberapa tools **Front-End** populer khususnya untuk **React Developer** dan bisa di **customisasi** sesuai dengan selera masing - masing bagi siapa saja yang mau menggunakannya, dikarenakan dari masing - masing orang mungkin ingin mempunyai standar **customisasi** nya sendiri sesuai dengan keinginannya, untuk demonya bisa klik disini [Moden React Boilerplate](https://vigilant-kepler-f2cb98.netlify.app/).
 
-<img src="https://i.imgur.com/pQYU9Fe.png" width="512" height="320" alt="logo-react" style="position:relative; margin: auto; padding:10px">
+<img src="https://i.imgur.com/pQYU9Fe.png" width="1024" height="500" alt="logo-react" style="position:relative; margin: auto; padding:10px">
+
+<img src="https://i.imgur.com/QGF0JH2.png" width="1024" height="200" alt="logo-react" style="position:relative; margin: auto; padding:10px">
 
 #### Run Application
 
@@ -18,8 +20,8 @@
 - [x] Support SASS Preprocessor CSS
 - [x] Support Dynamic Import & Lazy Loading
 - [x] Support Linting JavaScript & CSS
-- [x] Support .env file Automatic load
-- [x] Support Manual Proxy Like CRA
+- [x] Support .env File
+- [x] Support Manual Proxy
 - [x] And More
 
 #### Build Include Technology
@@ -32,3 +34,11 @@
 - Prettier
 - Stylelint
 - Any More
+
+### Author
+
+- **[Restu Wahyu Saputra](https://github.com/restuwahyu13)**
+
+### LICENSE
+
+- **[MIT](https://github.com/restuwahyu13/react-boilerplate/LICENSE.md)**

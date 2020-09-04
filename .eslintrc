@@ -15,7 +15,8 @@
 		"prettier",
 		"plugin:prettier/recommended",
 		"plugin:security/recommended",
-		"plugin:react-redux/recommended"
+		"plugin:react-redux/recommended",
+		"plugin:promise/recommended"
 	],
 	"plugins": ["prettier", "react", "react-hooks", "import", "jsx-a11y", "security", "react-redux"],
 	"rules": {
