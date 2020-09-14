@@ -23,7 +23,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@loadable/component": "^5.13.2",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "connected-react-router": "^6.8.0",
     "core-js": "^3.6.5",
