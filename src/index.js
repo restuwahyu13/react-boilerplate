@@ -2,16 +2,20 @@
 @description  this file is entrypoint react-application and webpack
 */
 import React from 'react'
-import { render } from 'react-dom'
-import { hot } from 'react-hot-loader/root'
+import ReactDOM from 'react-dom'
+import loadable from '@loadable/component'
 import './assets/css/index.css'
 import App from './App'
 
 /**
-@description on HotReload if environment is development mode
+@description use code splitting
 */
-const RootComponent = (Component) => render(<Component />, document.getElementById('root'))
-RootComponent(hot(App))
+const App = loadable(() => import('./App'))
+
+/**
+@description render app component
+*/
+ReactDOM.render(<App/>, document.getElementById('root'))
 
 /**
 @description on serviceWorker if environment is production mode

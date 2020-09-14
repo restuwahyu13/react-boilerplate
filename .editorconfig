@@ -22,9 +22,9 @@ indent_style = tab
 indent_size = 2
 
 # tab_width space javascript and typescript
-# [*.{js, jsx}]
-# tab_width = 3
+[*.{js, jsx}]
+tab_width = 2
 
 # tab_width space javascript and typescript
-# [*.{html, css}]
-# tab_width = 2
+[*.{html, css}]
+tab_width = 2

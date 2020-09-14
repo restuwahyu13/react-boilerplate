@@ -5,7 +5,7 @@ function App() {
 	return (
 		<div className='App'>
 			<header className='App-header'>
-				<code>Modern React Boilerplate 2020</code>
+				<code>Minimalize Modern React Boilerplate 2020</code>
 				<img src={logo} className='App-logo' alt='logo' />
 				<p>
 					<code>Edit src/App.js and save to reload.</code>

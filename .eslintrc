@@ -49,7 +49,17 @@
 		"react/jsx-one-expression-per-line": 0,
 		"security/detect-non-literal-fs-filename": 0,
 		"react/jsx-indent-props": 0,
-		"react/jsx-closing-bracket-location": 0
+		"react/jsx-closing-bracket-location": 0,
+		"no-restricted-syntax": 0,
+		"guard-for-in": 0,
+		"react/require-default-props": 0,
+		"react/forbid-prop-types": 0,
+		"react-redux/prefer-separate-component-file": 0,
+		"react/jsx-curly-newline": 0,
+		"react-hooks/exhaustive-deps": 0,
+		"no-use-before-define": 0,
+		"import/prefer-default-export": 0,
+		"promise/always-return": 0
 	},
 	"env": {
 		"browser": true,
