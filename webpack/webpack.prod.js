@@ -23,23 +23,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              minified: true,
-              plugins: [
-                'transform-remove-console',
-                'babel-plugin-transform-remove-undefined',
-                ['transform-react-remove-prop-types', { mode: 'wrap', ignoreFilenames: ['node_modules'] }],
-                ['styled-jsx/babel', { optimizeForSpeed: true }]
-              ]
-            }
-          }
-        ]
-      },
-      {
         test: /\.(css|scss|sass)$/,
         use: [
           MiniCssExtractPlugin.loader,

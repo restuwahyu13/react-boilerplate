@@ -4,9 +4,9 @@
   "description": "Modern ReactJS Boilerplate 2020",
   "main": "index.js",
   "scripts": {
-    "b": "webpack --config webpack.config.js --env.env=prod -p",
-    "s": "webpack-dev-server --config webpack.config.js --env.env=dev --env.addon=progress --info=false",
-    "ba": "npm run b -- --env.addon=analyzer --env.addon=visualyzer --env.addon=inspect",
+    "b": "cross-env NODE_ENV=production webpack --config webpack.config.js --env.env=prod -p",
+    "s": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --env.env=dev --env.addon=progress --info=false",
+    "ba": "cross-env NODE_ENV=prod npm run b -- --env.addon=analyzer --env.addon=visualyzer --env.addon=inspect",
     "t": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,27 +21,10 @@
   "author": "restuwahyu13",
   "license": "MIT",
   "dependencies": {
-    "@ant-design/icons": "^4.2.2",
     "@loadable/component": "^5.13.2",
-    "axios": "^0.19.2",
-    "bootstrap": "^4.5.2",
-    "connected-react-router": "^6.8.0",
-    "core-js": "^3.6.5",
-    "history": "^4.10.1",
-    "http-proxy-middleware": "^1.0.5",
-    "js-cookie": "^2.2.1",
-    "jsonwebtoken": "^8.5.1",
-    "prop-types": "^15.7.2",
+    "cross-env": "^7.0.2",
     "react": "^16.13.1",
-    "react-bootstrap": "^1.3.0",
-    "react-dom": "^16.13.1",
-    "react-loadable": "^5.5.0",
-    "react-redux": "^7.2.1",
-    "react-router-dom": "^5.2.0",
-    "react-toastify": "^6.0.8",
-    "react-uuid": "^1.0.2",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

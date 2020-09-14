@@ -3,6 +3,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 
+const isDevPlugin = ['react-refresh/babel']
+
+const isProdPlugin = [
+  '@babel/plugin-transform-block-scoping',
+  'transform-remove-console',
+  'babel-plugin-transform-remove-undefined',
+  ['transform-react-remove-prop-types', { mode: 'wrap', ignoreFilenames: ['node_modules'] }]
+]
+
+const isProdDevPlugin = [
+  '@babel/plugin-transform-async-to-generator',
+  '@babel/plugin-syntax-dynamic-import',
+  ['@babel/plugin-proposal-class-properties', { loose: true }],
+  ['@babel/plugin-transform-runtime', { corejs: 3, useESModules: true }],
+  ['styled-jsx/babel', { optimizeForSpeed: true }]
+]
+
+const isPlugins = process.env.NODE_ENV !== 'production' ? isDevPlugin : isProdPlugin
+
 module.exports = {
   target: 'web',
   entry: {
@@ -20,6 +39,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              cacheDirectory: true,
               presets: [
                 [
                   '@babel/preset-env',
@@ -33,13 +53,7 @@ module.exports = {
                 ],
                 ['@babel/preset-react', { useBuiltIns: true }]
               ],
-              plugins: [
-                '@babel/plugin-transform-async-to-generator',
-                '@babel/plugin-syntax-dynamic-import',
-                '@babel/plugin-transform-block-scoping',
-                '@babel/plugin-proposal-class-properties',
-                ['@babel/plugin-transform-runtime', { corejs: 3, useESModules: true }]
-              ]
+              plugins: [...isProdDevPlugin, ...isPlugins]
             }
           }
         ],
@@ -110,7 +124,7 @@ module.exports = {
   ],
   resolve: {
     modules: [resolve(process.cwd(), 'src'), 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx'],
     symlinks: false,
     cacheWithContext: false
   }

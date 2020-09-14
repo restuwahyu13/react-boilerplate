@@ -21,7 +21,7 @@
 - [x] Support Dynamic Import & Lazy Loading
 - [x] Support Linting JavaScript & CSS
 - [x] Support .env File
-- [x] Support Manual Proxy
+- [x] Support Manual Proxy Like CRA
 - [x] And More
 
 #### Build Include Technology

@@ -15,18 +15,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-              plugins: ['react-refresh/babel']
-            }
-          }
-        ]
-      },
-      {
         test: /\.(css|scss|sass)$/,
         use: [
           'css-hot-loader',
