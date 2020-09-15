@@ -49,7 +49,7 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            name: 'images/[name].[contenthash].[ext]',
+            name: '[name].[contenthash].[ext]',
             limit: 10240
           }
         }
@@ -260,15 +260,13 @@ module.exports = {
           name: false,
           test: /\.js$/,
           chunks: 'all',
-          enforce: true,
-          reuseExistingChunk: true
+          enforce: true
         },
         styles: {
           name: false,
           test: /\.(css|sass|scss)$/,
           chunks: 'all',
-          enforce: true,
-          reuseExistingChunk: true
+          enforce: true
         }
       }
     }

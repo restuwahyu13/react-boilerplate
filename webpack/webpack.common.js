@@ -2,25 +2,7 @@ const { resolve } = require('path')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
-
-const isDevPlugin = ['react-refresh/babel']
-
-const isProdPlugin = [
-  '@babel/plugin-transform-block-scoping',
-  'transform-remove-console',
-  'babel-plugin-transform-remove-undefined',
-  ['transform-react-remove-prop-types', { mode: 'wrap', ignoreFilenames: ['node_modules'] }]
-]
-
-const isProdDevPlugin = [
-  '@babel/plugin-transform-async-to-generator',
-  '@babel/plugin-syntax-dynamic-import',
-  ['@babel/plugin-proposal-class-properties', { loose: true }],
-  ['@babel/plugin-transform-runtime', { corejs: 3, useESModules: true }],
-  ['styled-jsx/babel', { optimizeForSpeed: true }]
-]
-
-const isPlugins = process.env.NODE_ENV !== 'production' ? isDevPlugin : isProdPlugin
+const { isPresets, isProdDevPresets, isPlugins, isProdDevPlugin } = require('../babelConfig')
 
 module.exports = {
   target: 'web',
@@ -39,20 +21,9 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: true,
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    useBuiltIns: 'usage',
-                    corejs: 3,
-                    loose: true,
-                    bugfixes: true,
-                    modules: false
-                  }
-                ],
-                ['@babel/preset-react', { useBuiltIns: true }]
-              ],
+              cacheDirectory: process.env.NODE_ENV !== 'production' ? true : false,
+              minified: process.env.NODE_ENV !== 'production' ? false : true,
+              presets: [...isProdDevPresets, ...isPresets],
               plugins: [...isProdDevPlugin, ...isPlugins]
             }
           }
