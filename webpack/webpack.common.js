@@ -1,5 +1,5 @@
 const { resolve } = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 
@@ -78,15 +78,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      favicon: resolve(process.cwd(), 'public/favicon.png'),
+    new FaviconsWebpackPlugin({
+      logo: resolve(process.cwd(), 'public/favicon.png'),
+      mode: 'light',
+      devMode: 'light',
       inject: true
-    }),
-    new ScriptExtHtmlWebpackPlugin({
-      async: /\.js$/,
-      preload: {
-        test: /\.js$/
-      }
     }),
     new WebpackPwaManifest({
       name: 'Minimalize Modern React',
@@ -120,12 +116,16 @@ module.exports = {
       crossorigin: 'use-credentials',
       inject: true,
       fingerprints: true
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      async: /\.js$/,
+      preload: {
+        test: /\.js$/
+      }
     })
   ],
   resolve: {
     modules: [resolve(process.cwd(), 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx'],
-    symlinks: false,
-    cacheWithContext: false
+    extensions: ['.js', '.jsx']
   }
 }

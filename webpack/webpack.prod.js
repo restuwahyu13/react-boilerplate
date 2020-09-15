@@ -10,15 +10,14 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
 const ThreeShakingWebpackPlugin = require('webpack-common-shake').Plugin
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin')
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin')
 const WebpackProgressBar = require('webpackbar')
 
 module.exports = {
   mode: 'production',
   output: {
     filename: 'static/js/[name].bundle.[contenthash].js',
-    chunkFilename: 'static/js/[id].chunk.[contenthash].js',
-    library: '[name]',
-    umdNamedDefine: false
+    chunkFilename: 'static/js/[id].chunk.[contenthash].js'
   },
   module: {
     rules: [
@@ -107,6 +106,7 @@ module.exports = {
       cleanAfterEveryBuildPatterns: ['build']
     }),
     new HtmlWebpackPlugin({
+      filename: 'index.html',
       template: resolve(process.cwd(), 'public/index.html'),
       minify: {
         collapseWhitespace: true,
@@ -122,7 +122,19 @@ module.exports = {
         minifyJS: true,
         minifyCSS: true,
         minifyURLs: true
-      }
+      },
+      inject: true
+    }),
+    new HtmlCriticalWebpackPlugin({
+      base: resolve(process.cwd(), 'build'),
+      src: 'index.html',
+      dest: 'index.html',
+      inline: true,
+      minify: true,
+      extract: true,
+      width: 375,
+      height: 565,
+      penthouse: { blockJSRequests: false }
     }),
     new UnminifiedWebpackPlugin(),
     new ThreeShakingWebpackPlugin(),
@@ -188,7 +200,7 @@ module.exports = {
         level: zlib.constants.Z_BEST_COMPRESSION,
         strategy: zlib.constants.Z_RLE
       },
-      exclude: ['build', 'node_modules']
+      exclude: ['node_modules']
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -198,7 +210,7 @@ module.exports = {
         level: zlib.constants.Z_BEST_COMPRESSION,
         strategy: zlib.constants.Z_RLE
       },
-      exclude: ['build', 'node_modules']
+      exclude: ['node_modules']
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -208,7 +220,7 @@ module.exports = {
         level: zlib.constants.Z_BEST_COMPRESSION,
         strategy: zlib.constants.Z_RLE
       },
-      exclude: ['build', 'node_modules']
+      exclude: ['node_modules']
     })
   ],
   optimization: {
@@ -218,7 +230,7 @@ module.exports = {
       new TenserWebpackPlugin({
         test: /\.(js|jsx)$/,
         terserOptions: {
-          parser: { ecma: 8, bare_returns: true, html5_comments: false },
+          parser: { ecma: 6, bare_returns: true, html5_comments: false },
           compress: { module: true, inline: 1 },
           mangle: { module: true, toplevel: true },
           output: { comments: false, preserve_annotations: true, braces: true, indent_level: 2 },

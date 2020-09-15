@@ -72,7 +72,9 @@ module.exports = {
       message: 'Starting the development server...'
     }),
     new HtmlWebpackPlugin({
-      template: resolve(process.cwd(), 'public/index.html')
+      filename: 'index.html',
+      template: resolve(process.cwd(), 'public/index.html'),
+      inject: true
     })
   ],
   optimization: {

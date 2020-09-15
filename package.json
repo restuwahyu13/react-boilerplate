@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
   "version": "1.0.0",
-  "description": "Modern ReactJS Boilerplate 2020",
+  "description": "Minimalize Modern ReactJS Boilerplate 2020",
   "main": "index.js",
   "scripts": {
     "b": "cross-env NODE_ENV=production webpack --config webpack.config.js --env.env=prod -p",
@@ -63,6 +63,7 @@
     "favicons-webpack-plugin": "^3.0.1",
     "file-loader": "^6.1.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-critical-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^4.4.1",
     "image-webpack-loader": "^6.0.0",
     "inspectpack": "^4.5.2",
