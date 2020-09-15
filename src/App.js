@@ -4,7 +4,7 @@ import './App.css'
 
 const App = () => (
 	<div className='App'>
-		<header className='App-header'>
+		<div className='App-header'>
 			<code>Minimalize Modern React Boilerplate 2020</code>
 			<img src={logo} className='App-logo' alt='logo' />
 			<p>
@@ -18,7 +18,7 @@ const App = () => (
 			<p>
 				<code>React Boilerplate Powered By Coding Street Art Team &copy;2020</code>
 			</p>
-		</header>
+		</div>
 	</div>
 )
 
