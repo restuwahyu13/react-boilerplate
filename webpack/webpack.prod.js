@@ -154,7 +154,7 @@ module.exports = {
             },
             expiration: {
               maxEntries: 100,
-              maxAgeSeconds: 24 * 60 * 60 * 60
+              maxAgeSeconds: 24 * 60 * 60 * 1000 * 30
             }
           }
         },
@@ -168,7 +168,7 @@ module.exports = {
             },
             expiration: {
               maxEntries: 100,
-              maxAgeSeconds: 24 * 60 * 60 * 60
+              maxAgeSeconds: 24 * 60 * 60 * 1000 * 30
             }
           }
         },
@@ -182,7 +182,7 @@ module.exports = {
             },
             expiration: {
               maxEntries: 100,
-              maxAgeSeconds: 24 * 60 * 60 * 60
+              maxAgeSeconds: 24 * 60 * 60 * 1000 * 30
             }
           }
         }
@@ -199,7 +199,9 @@ module.exports = {
         level: zlib.constants.Z_BEST_COMPRESSION,
         strategy: zlib.constants.Z_RLE
       },
-      exclude: ['node_modules']
+      minRatio: Number.MAX_SAFE_INTEGER,
+      cache: true,
+      exclude: /node_modules/
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -209,7 +211,9 @@ module.exports = {
         level: zlib.constants.Z_BEST_COMPRESSION,
         strategy: zlib.constants.Z_RLE
       },
-      exclude: ['node_modules']
+      minRatio: Number.MAX_SAFE_INTEGER,
+      cache: true,
+      exclude: /node_modules/
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -219,7 +223,9 @@ module.exports = {
         level: zlib.constants.Z_BEST_COMPRESSION,
         strategy: zlib.constants.Z_RLE
       },
-      exclude: ['node_modules']
+      minRatio: Number.MAX_SAFE_INTEGER,
+      cache: true,
+      exclude: /node_modules/
     })
   ],
   optimization: {
