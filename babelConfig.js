@@ -38,10 +38,7 @@ exports.isPresets = process.env.NODE_ENV !== 'production' ? isDevPresets : isPro
 
 const isDevPlugin = ['react-refresh/babel']
 
-const isProdPlugin = [
-  '@babel/plugin-transform-block-scoping',
-  ['transform-react-remove-prop-types', { mode: 'wrap', ignoreFilenames: ['node_modules'] }]
-]
+const isProdPlugin = [['transform-react-remove-prop-types', { mode: 'wrap', ignoreFilenames: ['node_modules'] }]]
 
 exports.isProdDevPlugin = [
   '@babel/plugin-transform-async-to-generator',
