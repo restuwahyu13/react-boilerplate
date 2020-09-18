@@ -22,6 +22,8 @@
 - [x] Support Linting JavaScript & CSS
 - [x] Support .env File
 - [x] Support Manual Proxy Like CRA
+- [x] Support GraphqQL
+- [x] Support Friendly Error
 - [x] And More
 
 #### Build Include Technology
