@@ -43,6 +43,8 @@
     "autoprefixer": "^10.0.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "babel-plugin-graphql-tag": "^3.1.0",
+    "babel-plugin-import-graphql": "^2.7.0",
     "babel-plugin-minify-constant-folding": "^0.5.0",
     "babel-plugin-minify-dead-code-elimination": "^0.5.1",
     "babel-plugin-minify-flip-comparisons": "^0.4.3",

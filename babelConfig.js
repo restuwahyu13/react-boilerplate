@@ -27,7 +27,9 @@ exports.isProdDevPlugin = [
   'babel-plugin-minify-flip-comparisons',
   'babel-plugin-transform-merge-sibling-variables',
   'react-html-attrs',
+  ['import-graphql', { extensions: ['.graphql', '.gql'] }],
   ['@babel/plugin-transform-runtime', { corejs: 3 }],
+  ['babel-plugin-graphql-tag', { onlyMatchImportSuffix: true, strip: true }],
   ['styled-jsx/babel', { optimizeForSpeed: true }]
 ]
 
