@@ -23,11 +23,7 @@ module.exports = {
             options: { injectType: 'singletonStyleTag' }
           },
           {
-            loader: 'css-loader',
-            options: {
-              localsConvention: 'camelCase',
-              sourceMap: true
-            }
+            loader: 'css-loader'
           }
         ]
       },
@@ -82,17 +78,15 @@ module.exports = {
       cacheGroups: {
         vendors: {
           name: 'vendors',
-          test: /\.js$/,
+          test: /[\\/](node_modules|bower_components)[\\/]/,
           chunks: 'all',
-          enforce: true,
-          reuseExistingChunk: true
+          enforce: true
         },
         styles: {
           name: 'styles',
           test: /\.(css|sass|scss)$/,
           chunks: 'all',
-          enforce: true,
-          reuseExistingChunk: true
+          enforce: true
         }
       }
     }
@@ -114,6 +108,5 @@ module.exports = {
     },
     port: process.env.PORT || 3000,
     liveReload: false
-  },
-  devtool: 'inline-source-map'
+  }
 }

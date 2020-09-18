@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
-const { isPresets, isProdDevPresets, isPlugins, isProdDevPlugin } = require('../babelConfig')
+const { isPlugins, isProdDevPlugin } = require('../babelConfig')
 
 module.exports = {
   target: 'web',
@@ -23,13 +23,42 @@ module.exports = {
             options: {
               cacheDirectory: process.env.NODE_ENV !== 'production' ? true : false,
               minified: process.env.NODE_ENV !== 'production' ? false : true,
-              presets: [...isProdDevPresets, ...isPresets],
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    useBuiltIns: 'usage',
+                    corejs: 3,
+                    bugfixes: true,
+                    forceAllTransforms: true,
+                    modules: false
+                  }
+                ],
+                ['@babel/preset-react', { useBuiltIns: true, throwIfNamespace: false }]
+              ],
               plugins: [...isProdDevPlugin, ...isPlugins]
             }
           }
         ],
         include: resolve(process.cwd(), 'src'),
-        exclude: /node_modules/
+        exclude: /(node_modules|bower_components)/
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        use: [
+          {
+            loader: 'webpack-graphql-loader',
+            options: {
+              validate: true,
+              removeUnusedFragments: true,
+              minify: process.env.NODE_ENV !== 'production' ? false : true
+            }
+          }
+        ]
       },
       {
         test: /\.(scss|sass)$/,
@@ -89,7 +118,7 @@ module.exports = {
       fingerprints: true
     }),
     new ScriptExtHtmlWebpackPlugin({
-      async: /\.js$/,
+      defer: /\.js$/,
       preload: {
         test: /\.js$/
       }
@@ -97,6 +126,9 @@ module.exports = {
   ],
   resolve: {
     modules: [resolve(process.cwd(), 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx']
-  }
+    extensions: ['.js', '.jsx', '.css', '.scss'],
+    symlinks: false,
+    cacheWithContext: false
+  },
+  devtool: process.env.NODE_ENV !== 'production' ? 'eval-cheap-source-map' : 'source-map'
 }

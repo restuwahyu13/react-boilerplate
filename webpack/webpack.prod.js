@@ -11,6 +11,7 @@ const { GenerateSW } = require('workbox-webpack-plugin')
 const ThreeShakingWebpackPlugin = require('webpack-common-shake').Plugin
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin')
 const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin')
+const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin')
 const WebpackProgressBar = require('webpackbar')
 
 module.exports = {
@@ -102,10 +103,13 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new WebpackProgressBar(),
+    new UnminifiedWebpackPlugin(),
+    new ThreeShakingWebpackPlugin(),
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns: ['build']
     }),
     new HtmlWebpackPlugin({
+      filename: 'index.html',
       template: resolve(process.cwd(), 'public/index.html'),
       minify: {
         collapseWhitespace: true,
@@ -121,8 +125,7 @@ module.exports = {
         minifyJS: true,
         minifyCSS: true,
         minifyURLs: true
-      },
-      inject: true
+      }
     }),
     new HtmlCriticalWebpackPlugin({
       base: resolve(process.cwd(), 'build'),
@@ -135,8 +138,7 @@ module.exports = {
       height: 565,
       penthouse: { blockJSRequests: false }
     }),
-    new UnminifiedWebpackPlugin(),
-    new ThreeShakingWebpackPlugin(),
+    new DynamicCdnWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].bundle.[contenthash].css',
       chunkFilename: 'static/css/[id].chunk.[contenthash].css'
@@ -154,7 +156,7 @@ module.exports = {
             },
             expiration: {
               maxEntries: 100,
-              maxAgeSeconds: 24 * 60 * 60 * 1000 * 30
+              maxAgeSeconds: 24 * 60 * 60 * 30
             }
           }
         },
@@ -168,7 +170,7 @@ module.exports = {
             },
             expiration: {
               maxEntries: 100,
-              maxAgeSeconds: 24 * 60 * 60 * 1000 * 30
+              maxAgeSeconds: 24 * 60 * 60 * 30
             }
           }
         },
@@ -182,7 +184,7 @@ module.exports = {
             },
             expiration: {
               maxEntries: 100,
-              maxAgeSeconds: 24 * 60 * 60 * 1000 * 30
+              maxAgeSeconds: 24 * 60 * 60 * 30
             }
           }
         }
@@ -200,8 +202,8 @@ module.exports = {
         strategy: zlib.constants.Z_RLE
       },
       minRatio: Number.MAX_SAFE_INTEGER,
-      cache: true,
-      exclude: /node_modules/
+      cache: false,
+      exclude: /(node_modules|bower_components)/
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -212,8 +214,8 @@ module.exports = {
         strategy: zlib.constants.Z_RLE
       },
       minRatio: Number.MAX_SAFE_INTEGER,
-      cache: true,
-      exclude: /node_modules/
+      cache: false,
+      exclude: /(node_modules|bower_components)/
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -224,8 +226,8 @@ module.exports = {
         strategy: zlib.constants.Z_RLE
       },
       minRatio: Number.MAX_SAFE_INTEGER,
-      cache: true,
-      exclude: /node_modules/
+      cache: false,
+      exclude: /(node_modules|bower_components)/
     })
   ],
   optimization: {
@@ -239,13 +241,18 @@ module.exports = {
           compress: { module: true, inline: 1 },
           mangle: { module: true, toplevel: true },
           output: { comments: false, preserve_annotations: true, braces: true, indent_level: 2 },
-          keep_classnames: true,
-          keep_fnames: true,
-          safari10: true
+          module: false,
+          keep_classnames: false,
+          keep_fname: false,
+          nameCache: false,
+          ie8: false,
+          safari10: false
         },
         parallel: require('os').cpus().length,
         extractComments: true,
-        sourceMap: true
+        sourceMap: true,
+        cache: false,
+        exclude: /(node_modules|bower_components)/
       }),
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),
@@ -269,7 +276,9 @@ module.exports = {
           enforce: true
         }
       }
-    }
+    },
+    noEmitOnErrors: true,
+    sideEffects: true
   },
   stats: {
     assetsSort: '!size',
@@ -278,6 +287,5 @@ module.exports = {
     children: false,
     modules: false,
     warnings: false
-  },
-  devtool: 'source-map'
+  }
 }
