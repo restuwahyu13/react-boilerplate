@@ -2,6 +2,10 @@
 @description BABEL CUSTOM PLUGINS CONFIG
 */
 
+const optionBabelStyleComponent = process.env.NODE_ENV !== 'production'
+? { fileName: true, minify: false, transpileTemplateLiterals: false , pure: false}
+ : { minify: true, transpileTemplateLiterals: true, pure : true }
+
 const isDevPlugin = ['react-refresh/babel']
 
 const isProdPlugin = [
@@ -30,6 +34,7 @@ exports.isProdDevPlugin = [
   ['import-graphql', { extensions: ['.graphql', '.gql'] }],
   ['@babel/plugin-transform-runtime', { corejs: 3 }],
   ['babel-plugin-graphql-tag', { onlyMatchImportSuffix: true, strip: true }],
+   ['babel-plugin-styled-components', { ...optionBabelStyleComponent}],
   ['styled-jsx/babel', { optimizeForSpeed: true }]
 ]
 

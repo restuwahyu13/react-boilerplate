@@ -24,6 +24,7 @@
 - [x] Support Manual Proxy Like CRA
 - [x] Support GraphqQL
 - [x] Support Friendly Error
+- [x] Support Styled Components
 - [x] And More
 
 #### Build Include Technology

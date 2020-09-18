@@ -50,6 +50,7 @@
     "babel-plugin-minify-flip-comparisons": "^0.4.3",
     "babel-plugin-react-html-attrs": "^3.0.5",
     "babel-plugin-remove-export-keywords": "^1.6.18",
+    "babel-plugin-styled-components": "^1.11.1",
     "babel-plugin-transform-inline-consecutive-adds": "^0.4.3",
     "babel-plugin-transform-merge-sibling-variables": "^6.9.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
