@@ -203,7 +203,15 @@ module.exports = {
       },
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
-      exclude: /(node_modules|bower_components)/
+      exclude: [
+        '/(node_modules|bower_components)/',
+        '/.(test.js|spec.js)/$',
+        resolve(process.cwd(), 'build/**/*'),
+        resolve(process.cwd(), 'public/**/*'),
+        resolve(process.cwd(), 'webpack/**/*'),
+        resolve(process.cwd(), '.github/**/*'),
+        resolve(process.cwd(), 'coverage/**/*')
+      ]
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -215,7 +223,15 @@ module.exports = {
       },
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
-      exclude: /(node_modules|bower_components)/
+      exclude: [
+        '/(node_modules|bower_components)/',
+        '/.(test.js|spec.js)/$',
+        resolve(process.cwd(), 'build/**/*'),
+        resolve(process.cwd(), 'public/**/*'),
+        resolve(process.cwd(), 'webpack/**/*'),
+        resolve(process.cwd(), '.github/**/*'),
+        resolve(process.cwd(), 'coverage/**/*')
+      ]
     }),
     new CompressionPlugin({
       filename: '[path].br[query]',
@@ -227,7 +243,15 @@ module.exports = {
       },
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
-      exclude: /(node_modules|bower_components)/
+      exclude: [
+        '/(node_modules|bower_components)/',
+        '/.(test.js|spec.js)/$',
+        resolve(process.cwd(), 'build/**/*'),
+        resolve(process.cwd(), 'public/**/*'),
+        resolve(process.cwd(), 'webpack/**/*'),
+        resolve(process.cwd(), '.github/**/*'),
+        resolve(process.cwd(), 'coverage/**/*')
+      ]
     })
   ],
   optimization: {
@@ -252,7 +276,15 @@ module.exports = {
         extractComments: true,
         sourceMap: true,
         cache: false,
-        exclude: /(node_modules|bower_components)/
+        exclude: [
+          '/(node_modules|bower_components)/',
+          '/.(test.js|spec.js)/$',
+          resolve(process.cwd(), 'build/**/*'),
+          resolve(process.cwd(), 'public/**/*'),
+          resolve(process.cwd(), 'webpack/**/*'),
+          resolve(process.cwd(), '.github/**/*'),
+          resolve(process.cwd(), 'coverage/**/*')
+        ]
       }),
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),

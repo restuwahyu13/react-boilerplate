@@ -1,12 +1,11 @@
 {
 	"parser": "babel-eslint",
 	"parserOptions": {
-		"ecmaVersion": 2018,
+		"ecmaVersion": 2016,
 		"sourceType": "module",
 		"ecmaFeatures": {
 			"jsx": true
-		},
-		"codeFrame": false
+		}
 	},
 	"extends": [
 		"eslint:recommended",
@@ -16,9 +15,10 @@
 		"plugin:prettier/recommended",
 		"plugin:security/recommended",
 		"plugin:react-redux/recommended",
-		"plugin:promise/recommended"
+		"plugin:promise/recommended",
+		"jest-enzyme"
 	],
-	"plugins": ["prettier", "react", "react-hooks", "import", "jsx-a11y", "security", "react-redux"],
+	"plugins": ["prettier", "react", "react-hooks", "import", "jsx-a11y", "security", "react-redux", "jest"],
 	"rules": {
 		"prettier/prettier": 2,
 		"semi": 0,

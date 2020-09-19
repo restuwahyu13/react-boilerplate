@@ -25,6 +25,7 @@
 - [x] Support GraphqQL
 - [x] Support Friendly Error
 - [x] Support Styled Components
+- [x] Support Unit Test Jest & Enzyme
 - [x] And More
 
 #### Build Include Technology

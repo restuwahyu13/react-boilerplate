@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
-const { isPlugins, isProdDevPlugin } = require('../babelConfig')
+const { isPlugins, isProdDevPlugin } = require('../babel.custom.config')
 
 module.exports = {
   target: 'web',
@@ -21,8 +21,6 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: process.env.NODE_ENV !== 'production' ? true : false,
-              minified: process.env.NODE_ENV !== 'production' ? false : true,
               presets: [
                 [
                   '@babel/preset-env',
@@ -36,16 +34,24 @@ module.exports = {
                 ],
                 ['@babel/preset-react', { useBuiltIns: true, throwIfNamespace: false }]
               ],
-              plugins: [...isProdDevPlugin, ...isPlugins]
+              plugins: [...isProdDevPlugin, ...isPlugins],
+              cacheDirectory: process.env.NODE_ENV !== 'production' ? true : false,
+              comments: process.env.NODE_ENV !== 'production' ? true : false,
+              minified: process.env.NODE_ENV !== 'production' ? false : true,
+              babelrc: false
             }
           }
         ],
         include: resolve(process.cwd(), 'src'),
-        exclude: /(node_modules|bower_components)/
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
+        exclude: [
+          '/(node_modules|bower_components)/',
+          '/.(test.js|spec.js)/$',
+          resolve(process.cwd(), 'build/**/*'),
+          resolve(process.cwd(), 'public/**/*'),
+          resolve(process.cwd(), 'webpack/**/*'),
+          resolve(process.cwd(), '.github/**/*'),
+          resolve(process.cwd(), 'coverage/**/*')
+        ]
       },
       {
         test: /\.(graphql|gql)$/,
@@ -74,6 +80,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },

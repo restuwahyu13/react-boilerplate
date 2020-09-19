@@ -3,7 +3,3 @@ build
 workbox-config-g.js
 debug.log
 .env
-src/routes/PrivateRoute.jsx
-src/services/id.js
-src/services/verify.js
-src/components/ModalForm.jsx

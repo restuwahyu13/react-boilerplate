@@ -1,0 +1,43 @@
+{
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/preset-env", {"useBuiltIns": "usage","corejs": 3, "bugfixes": true, "forceAllTransforms": true}],
+        ["@babel/preset-react", {"useBuiltIns": true}],
+        "jest"
+      ],
+      "plugins": [
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-async-to-generator",
+        "@babel/plugin-transform-modules-commonjs",
+        "@babel/plugin-transform-shorthand-properties",
+        "babel-plugin-transform-inline-consecutive-adds",
+        "babel-plugin-minify-constant-folding",
+        "babel-plugin-minify-flip-comparisons",
+        "babel-plugin-transform-merge-sibling-variables"
+      ],
+       "ignore": [
+        "/(node_modules|bower_components)/",
+        "**/build/**/*",
+        "**/public/**/*",
+        "**/webpack/**/*",
+        "**/.github/**/*",
+        "**/coverage/**/*",
+        ".eslintrc",
+        ".stylelintrc",
+        ".prettierrc",
+        ".browserslistrc",
+        ".editorconfig",
+        "babel.babel.custom.config.js",
+        "postcss.config.js",
+        "webpack.config.js",
+        "package.json",
+        "package-lock.json",
+        "README.md",
+        "LICENSE.md",
+         ".gitignore"
+      ]
+    }
+  }
+}
