@@ -135,6 +135,6 @@
     "webpack-pwa-manifest": "^4.2.0",
     "webpack-visualizer-plugin": "^0.1.11",
     "webpackbar": "^4.0.0",
-    "workbox-webpack-plugin": "^4.3.1"
+    "workbox-webpack-plugin": "^5.1.4"
   }
 }
