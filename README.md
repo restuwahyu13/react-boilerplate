@@ -22,7 +22,7 @@
 - [x] Support Linting JavaScript & CSS
 - [x] Support .env File
 - [x] Support Manual Proxy Like CRA
-- [x] Support GraphqQL
+- [x] Support GraphQL
 - [x] Support Friendly Error
 - [x] Support Styled Components
 - [x] Support Unit Test Jest & Enzyme
