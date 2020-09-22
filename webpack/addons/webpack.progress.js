@@ -12,8 +12,8 @@ module.exports = {
 					`${chalk.white.bold('Testing component react application')} ${chalk.blue('npm run t')}`,
 					`${chalk.white.bold('Testing component react application watch')} ${chalk.blue('npm run t:watch')}`,
 					`${chalk.white.bold('Testing component react application converage')} ${chalk.blue('npm run t:converage')}`,
-					`${chalk.yellow.bold('Noted Production')} ${chalk.white.bold(
-						'Add the vendors used in your application to vendors file to reduce the bundle size'
+					`${chalk.yellow.bold('Production')} ${chalk.white.bold(
+						'add the vendors used in your application to vendors file to reduce the bundle size'
 					)}`
 				]
 			},
