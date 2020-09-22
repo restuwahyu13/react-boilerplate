@@ -30,6 +30,7 @@
         ".browserslistrc",
         ".editorconfig",
         "babel.babel.custom.config.js",
+        "vendors.js",
         "postcss.config.js",
         "webpack.config.js",
         "package.json",

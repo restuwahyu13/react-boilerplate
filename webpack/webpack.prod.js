@@ -11,11 +11,13 @@ const { GenerateSW } = require('workbox-webpack-plugin')
 const ThreeShakingWebpackPlugin = require('webpack-common-shake').Plugin
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin')
 const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin')
-const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin')
 const WebpackProgressBar = require('webpackbar')
 
 module.exports = {
   mode: 'production',
+  entry: {
+    vendors: resolve(process.cwd(), 'vendors.js')
+  },
   output: {
     filename: 'static/js/[name].bundle.[contenthash].js',
     chunkFilename: 'static/js/[id].chunk.[contenthash].js'
@@ -99,9 +101,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
     new WebpackProgressBar(),
     new UnminifiedWebpackPlugin(),
     new ThreeShakingWebpackPlugin(),
@@ -138,7 +137,6 @@ module.exports = {
       height: 565,
       penthouse: { blockJSRequests: false }
     }),
-    new DynamicCdnWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].bundle.[contenthash].css',
       chunkFilename: 'static/css/[id].chunk.[contenthash].css'
@@ -198,9 +196,10 @@ module.exports = {
       test: /\.(js|css|html|json)$/,
       algorithm: 'brotliCompress',
       compressionOptions: {
-        level: zlib.constants.Z_BEST_COMPRESSION,
+        level: 11,
         strategy: zlib.constants.Z_RLE
       },
+      threshold: 10240,
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
       exclude: [
@@ -218,9 +217,10 @@ module.exports = {
       test: /\.(jp?g|png|svg|gif|raw|webp)$/,
       algorithm: 'brotliCompress',
       compressionOptions: {
-        level: zlib.constants.Z_BEST_COMPRESSION,
+        level: 11,
         strategy: zlib.constants.Z_RLE
       },
+      threshold: 10240,
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
       exclude: [
@@ -238,9 +238,10 @@ module.exports = {
       test: /\.(woff|woff2|eot|ttf|otf)$/,
       algorithm: 'brotliCompress',
       compressionOptions: {
-        level: zlib.constants.Z_BEST_COMPRESSION,
+        level: 11,
         strategy: zlib.constants.Z_RLE
       },
+      threshold: 10240,
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
       exclude: [
@@ -255,7 +256,7 @@ module.exports = {
     })
   ],
   optimization: {
-    runtimeChunk: 'single',
+    nodeEnv: 'production',
     minimize: true,
     minimizer: [
       new TenserWebpackPlugin({
@@ -296,8 +297,8 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         vendors: {
-          name: false,
-          test: /\.js$/,
+          name: 'vendors',
+          test: /[\\/]node_modules[\\/]/,
           chunks: 'all',
           enforce: true
         },
@@ -310,7 +311,11 @@ module.exports = {
       }
     },
     noEmitOnErrors: true,
-    sideEffects: true
+    sideEffects: true,
+    providedExports: true,
+    usedExports: true,
+    concatenateModules: true,
+    removeEmptyChunks: true
   },
   stats: {
     assetsSort: '!size',

@@ -4,13 +4,10 @@ const postcssFlexbox = require('postcss-flexbugs-fixes')
 const postcssPresetEnv = require('postcss-preset-env')
 const postcssNano = require('cssnano')
 const postcssStyleLint = require('stylelint')
-const postcssReporter = require('postcss-reporter')
 const postcssClean = require('postcss-clean')
-const postcssExtract = require('postcss-extract-media-query')
 
 module.exports = {
   plugins: [
-    postcssReporter(),
     postcssFlexbox({ bug4: false }),
     postcssImport({ root: process.cwd(), path: path.resolve(process.cwd(), 'src') }),
     postcssPresetEnv({
@@ -36,10 +33,6 @@ module.exports = {
           all: true
         }
       }
-    }),
-    postcssExtract({
-      path: path.resolve(process.cwd(), 'build'),
-      extractAll: true
     })
   ]
 }

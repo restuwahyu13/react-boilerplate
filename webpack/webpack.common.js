@@ -80,10 +80,6 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
       }
     ]
   },
@@ -128,10 +124,8 @@ module.exports = {
       fingerprints: true
     }),
     new ScriptExtHtmlWebpackPlugin({
-      defer: /\.js$/,
-      preload: {
-        test: /\.js$/
-      }
+      async: /\.js$/,
+      preload: /\.js$/
     })
   ],
   resolve: {

@@ -14,7 +14,6 @@ const isProdPlugin = [
   'babel-plugin-transform-remove-console',
   'babel-plugin-transform-remove-undefined',
   'babel-plugin-minify-dead-code-elimination',
-  'babel-plugin-remove-export-keywords',
   'babel-plugin-transform-remove-strict-mode',
   ['transform-react-remove-prop-types', { mode: 'wrap', ignoreFilenames: ['node_modules'] }]
 ]
@@ -30,7 +29,6 @@ exports.isProdDevPlugin = [
   'babel-plugin-transform-inline-consecutive-adds',
   'babel-plugin-minify-constant-folding',
   'babel-plugin-minify-flip-comparisons',
-  'babel-plugin-transform-merge-sibling-variables',
   'react-html-attrs',
   ['import-graphql', { extensions: ['.graphql', '.gql'] }],
   ['@babel/plugin-transform-runtime', { corejs: 3 }],

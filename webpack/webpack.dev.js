@@ -54,14 +54,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    }),
     new ReactRefreshWebpackPlugin(),
     new DotEnv({
       expand: true,
       systemvars: true,
-	  silent: true
+      silent: true
     }),
     new WebpackLogCompiler({
       env: 'development',
@@ -78,7 +75,7 @@ module.exports = {
       cacheGroups: {
         vendors: {
           name: 'vendors',
-          test: /[\\/](node_modules|bower_components)[\\/]/,
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
           chunks: 'all',
           enforce: true
         },
