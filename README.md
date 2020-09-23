@@ -1,6 +1,6 @@
 ### Minimalize Modern React Boilerplate 2020
 
-**Berikut** adalah **React Boilerplate** yang sudah siap pakai untuk **Production** atau **Development** yang sudah terintegrasi dengan beberapa tools **Front-End** populer khususnya untuk **React Developer** dan bisa di **customisasi** sesuai dengan selera masing - masing bagi siapa saja yang mau menggunakannya, dikarenakan dari masing - masing orang mungkin ingin mempunyai standar **customisasi** nya sendiri sesuai dengan keinginannya masing - masing, demo mini project menggunakan [**React CRA Boilerplate**](https://ngintip-ongkir.herokuapp.com).
+**Berikut** adalah **React Boilerplate** yang sudah siap pakai untuk **Production** atau **Development** yang sudah terintegrasi dengan beberapa tools **Front-End** populer khususnya untuk **React Developer** dan bisa di **customisasi** sesuai dengan selera masing - masing bagi siapa saja yang mau menggunakannya, dikarenakan dari masing - masing orang mungkin ingin mempunyai standar **customisasi** nya sendiri sesuai dengan keinginannya masing - masing, **demo mini project** menggunakan [**React CRA Boilerplate**](https://ngintip-ongkir.herokuapp.com).
 
 <img src="https://i.imgur.com/SZrhPak.png" width="1024" height="500" alt="logo-react" style="position:relative; margin: auto; padding:10px">
 
