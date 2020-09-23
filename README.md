@@ -54,6 +54,7 @@ if (process.env.NODE_ENV === 'production') {
       enableBrotli: true
     })
   )
+
   app.get('*', (req, res) => {
     res.sendFile(resolve(process.cwd(), 'client/build/index.html'))
   })
