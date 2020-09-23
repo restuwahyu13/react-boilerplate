@@ -1,4 +1,4 @@
-### Minimalize Modern React Boilerplate 2020
+### Minimalize Modern React Boilerplate (Easy To Customize)
 
 **Berikut** adalah **React Boilerplate** yang sudah siap pakai untuk **Production** atau **Development** yang sudah terintegrasi dengan beberapa tools **Front-End** populer khususnya untuk **React Developer** dan bisa di **customisasi** sesuai dengan selera masing - masing bagi siapa saja yang mau menggunakannya, dikarenakan dari masing - masing orang mungkin ingin mempunyai standar **customisasi** nya sendiri sesuai dengan keinginannya masing - masing, **demo mini project** menggunakan [**React CSA Boilerplate**](https://ngintip-ongkir.herokuapp.com).
 
