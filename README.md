@@ -24,7 +24,7 @@
 - [x] Support Manual Proxy Like CRA
 - [x] Support GraphQL
 - [x] Support Friendly Error
-- [x] Support Styled Components && another CSS Library In JS
+- [x] Support Styled Components & Another CSS Library In JS
 - [x] Support Unit Test Jest & Enzyme
 - [x] And More
 
