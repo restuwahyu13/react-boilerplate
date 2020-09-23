@@ -37,6 +37,9 @@
 - Eslint
 - Prettier
 - Stylelint
+- Postcss
+- Jest
+- Enzyme
 - Any More
 
 #### TIPS (Menyajikan file content yang di compress)
