@@ -24,7 +24,7 @@
 - [x] Support Manual Proxy Like CRA
 - [x] Support GraphQL
 - [x] Support Friendly Error
-- [x] Support Styled Components
+- [x] Support Styled Components && another CSS Library In JS
 - [x] Support Unit Test Jest & Enzyme
 - [x] And More
 
@@ -38,6 +38,29 @@
 - Prettier
 - Stylelint
 - Any More
+
+#### TIPS (Menyajikan file content yang di compress)
+
+- install **express-static-gzip**
+- kemudian tambahkan `code` seperti ini di **Back-End Server** anda.
+
+```javascript
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(resolve(process.cwd(), 'client/build')))
+
+  app.use(
+    '*',
+    staticGzip(resolve(process.cwd(), 'client/build/static/js'), {
+      enableBrotli: true
+    })
+  )
+  app.get('*', (req, res) => {
+    res.sendFile(resolve(process.cwd(), 'client/build/index.html'))
+  })
+}
+```
+
+- atau dengan menambahkan [custom content header middleware ](https://pastebin.com/8zwPjiSH) **(optional)**
 
 ### Author
 

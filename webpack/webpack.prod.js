@@ -199,7 +199,7 @@ module.exports = {
         level: 11,
         strategy: zlib.constants.Z_RLE
       },
-      threshold: 10240,
+      threshold: 5120,
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
       exclude: [
@@ -220,7 +220,7 @@ module.exports = {
         level: 11,
         strategy: zlib.constants.Z_RLE
       },
-      threshold: 10240,
+      threshold: 5120,
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
       exclude: [
@@ -241,7 +241,7 @@ module.exports = {
         level: 11,
         strategy: zlib.constants.Z_RLE
       },
-      threshold: 10240,
+      threshold: 5120,
       minRatio: Number.MAX_SAFE_INTEGER,
       cache: false,
       exclude: [
