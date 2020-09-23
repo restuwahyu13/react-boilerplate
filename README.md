@@ -18,7 +18,7 @@
 - [x] Support REACT HMR & CSS HMR
 - [x] Support Proggresive Web Apps (PWA) For Production
 - [x] Support SASS Preprocessor CSS
-- [x] Support Dynamic Import & Lazy Loading
+- [x] Support Dynamic Import & Code Splitting
 - [x] Support Linting JavaScript & CSS
 - [x] Support .env File
 - [x] Support Manual Proxy Like CRA
