@@ -11,6 +11,7 @@ const { GenerateSW } = require('workbox-webpack-plugin')
 const ThreeShakingWebpackPlugin = require('webpack-common-shake').Plugin
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin')
 const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin')
+const { StatsWriterPlugin } = require('webpack-stats-plugin')
 const WebpackProgressBar = require('webpackbar')
 
 module.exports = {
@@ -104,6 +105,7 @@ module.exports = {
     new WebpackProgressBar(),
     new UnminifiedWebpackPlugin(),
     new ThreeShakingWebpackPlugin(),
+    new StatsWriterPlugin(),
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns: ['build']
     }),
