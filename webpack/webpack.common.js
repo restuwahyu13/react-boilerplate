@@ -65,21 +65,6 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.(scss|sass)$/,
-        use: [
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('node-sass'),
-              sassOptions: {
-                outputStyle: 'compressed'
-              },
-              sourceMap: true
-            }
-          }
-        ]
       }
     ]
   },

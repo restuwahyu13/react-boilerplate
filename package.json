@@ -9,7 +9,9 @@
     "ba": "npm run b -- --env.addon=analyzer --env.addon=visualyzer --env.addon=checker",
     "t": "jest",
     "t:watch": "jest --watch",
-    "t:converage": "jest --converage --colors"
+    "t:converage": "jest --converage --colors",
+    "lint": "eslint ./src --fix",
+    "formatter": "prettier ./src --check"
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
+    "@testing-library/react-hooks": "^3.4.2",
     "autoprefixer": "^10.0.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
@@ -90,13 +93,12 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-critical-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^4.5.0",
+    "husky": "^4.3.0",
     "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^7.0.1",
     "inspectpack": "^4.5.2",
     "jest": "^26.4.2",
     "mini-css-extract-plugin": "^0.11.2",
-    "module-to-cdn": "^3.1.5",
-    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss-clean": "^1.1.0",
     "postcss-flexbugs-fixes": "^4.2.1",
@@ -132,5 +134,11 @@
     "webpack-visualizer-plugin": "^0.1.11",
     "webpackbar": "^4.0.0",
     "workbox-webpack-plugin": "^4.3.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run formatter"
+    }
   }
 }

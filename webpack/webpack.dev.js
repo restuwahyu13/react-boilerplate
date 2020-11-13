@@ -28,6 +28,18 @@ module.exports = {
         ]
       },
       {
+        test: /\.(scss|sass)$/,
+        use: [
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: { outputStyle: 'compressed' },
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(jp?g|png|svg|gif|raw|webp)$/,
         use: [
           {
