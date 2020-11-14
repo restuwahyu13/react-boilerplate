@@ -8,7 +8,7 @@
     "s": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --env.env=dev --env.addon=progress --info=false",
     "ba": "npm run b -- --env.addon=analyzer --env.addon=visualyzer --env.addon=checker",
     "t": "jest",
-    "t:watch": "jest --watch",
+    "t:watch": "jest --watchAll",
     "t:converage": "jest --converage --colors",
     "lint": "eslint ./src --fix",
     "formatter": "prettier ./src --check"
