@@ -1,5 +1,7 @@
 node_modules
 build
-workbox-config-g.js
 debug.log
 .env
+reports
+coverage
+package-lock

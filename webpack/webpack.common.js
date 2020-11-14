@@ -35,9 +35,9 @@ module.exports = {
                 ['@babel/preset-react', { useBuiltIns: true, throwIfNamespace: false }]
               ],
               plugins: [...isProdDevPlugin, ...isPlugins],
-              cacheDirectory: process.env.NODE_ENV !== 'production' ? true : false,
-              comments: process.env.NODE_ENV !== 'production' ? true : false,
-              minified: process.env.NODE_ENV !== 'production' ? false : true,
+              cacheDirectory: process.env.NODE_ENV !== 'production',
+              comments: process.env.NODE_ENV !== 'production',
+              minified: process.env.NODE_ENV === 'production',
               babelrc: false
             }
           }
@@ -53,6 +53,7 @@ module.exports = {
           resolve(process.cwd(), 'coverage/**/*')
         ]
       },
+
       {
         test: /\.(graphql|gql)$/,
         use: [
@@ -61,7 +62,7 @@ module.exports = {
             options: {
               validate: true,
               removeUnusedFragments: true,
-              minify: process.env.NODE_ENV !== 'production' ? false : true
+              minify: process.env.NODE_ENV === 'production'
             }
           }
         ]

@@ -66,10 +66,21 @@ if (process.env.NODE_ENV === 'production') {
 
 - atau dengan menambahkan [custom content header middleware ](https://pastebin.com/8zwPjiSH) **(optional)**
 
-### Author
+#### Global Method TDD Unit Test
+
+- shallow
+- mount
+- render
+- renderer
+- renderHook
+- act
+- addClear
+- cleanup
+
+#### Author
 
 - **[Restu Wahyu Saputra](https://github.com/restuwahyu13)**
 
-### LICENSE
+#### LICENSE
 
 - **[MIT](https://github.com/restuwahyu13/react-boilerplate/blob/master/LICENSE.md)**

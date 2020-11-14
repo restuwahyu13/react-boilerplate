@@ -33,8 +33,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sassOptions: { outputStyle: 'compressed' },
-              sourceMap: true
+              implementation: require('node-sass')
             }
           }
         ]
