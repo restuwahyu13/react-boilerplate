@@ -2,22 +2,18 @@
   "env": {
     "test": {
       "presets": [
-        ["@babel/preset-env", {"useBuiltIns": "usage","corejs": 3, "bugfixes": true, "forceAllTransforms": true}],
-        ["@babel/preset-react", {"useBuiltIns": true}],
+        ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3, "bugfixes": true, "forceAllTransforms": true }],
+        ["@babel/preset-react", { "useBuiltIns": true }],
         "jest"
       ],
       "plugins": [
-        "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-proposal-class-properties",
         "@babel/plugin-transform-async-to-generator",
         "@babel/plugin-transform-modules-commonjs",
-        "@babel/plugin-transform-shorthand-properties",
-        "babel-plugin-transform-inline-consecutive-adds",
-        "babel-plugin-minify-constant-folding",
-        "babel-plugin-minify-flip-comparisons",
-        "babel-plugin-transform-merge-sibling-variables"
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-syntax-dynamic-import"
       ],
-       "ignore": [
+      "ignore": [
         "/(node_modules|bower_components)/",
         "**/build/**/*",
         "**/public/**/*",
@@ -37,7 +33,7 @@
         "package-lock.json",
         "README.md",
         "LICENSE.md",
-         ".gitignore"
+        ".gitignore"
       ]
     }
   }

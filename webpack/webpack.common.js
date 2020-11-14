@@ -2,6 +2,7 @@ const { resolve } = require('path')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const { isPlugins, isProdDevPlugin } = require('../babel.custom.config')
 
 module.exports = {
@@ -70,6 +71,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new FaviconsWebpackPlugin({
       logo: resolve(process.cwd(), 'public/favicon.png'),
       mode: 'light',
