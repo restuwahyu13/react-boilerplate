@@ -9,7 +9,7 @@
     "ba": "npm run b -- --env.addon=analyzer --env.addon=visualyzer --env.addon=checker",
     "t": "jest",
     "t:watch": "jest --watchAll",
-    "t:converage": "jest --converage --colors",
+    "t:coverage": "jest --coverage --colors",
     "lint": "eslint ./src --fix",
     "formatter": "prettier ./src --check"
   },
