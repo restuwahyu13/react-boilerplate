@@ -76,6 +76,8 @@ if (process.env.NODE_ENV === 'production') {
 - act
 - addClear
 - cleanup
+- createSerializer
+- toJson
 
 #### Author
 
