@@ -1,12 +1,15 @@
 module.exports = {
-  testMatch: ['<rootDir>/test/**/*.{test.js, spec.js}', '<rootDir>/src/**/*.{test.js, spec.js}'],
+  testMatch: [
+    '<rootDir>/src/**/*.{test.js, spec.js}',
+    '<rootDir>/test/**/*.{test.js, spec.js}',
+    '<rootDir>/__test__/**/*.{test.js, spec.js}'
+  ],
   collectCoverageFrom: ['src/**/*.{js, jsx}'],
   setupFiles: ['<rootDir>/enzyme.config.js'],
   moduleNameMapper: {
     '\\.(css|less|scss|sass|jpg|jpeg|png|gif|webp|svg|jp?g|png|svg|gif|raw|webp|mpg|mp4|mp3|avi|ogv|ogg|wmv|amv|webm)$':
       'identity-obj-proxy'
   },
-  snapshotSerializers: ['enzyme-to-json/serializer'],
   clearMocks: true,
   transformIgnorePatterns: [
     '<rooDir>/node_modules/',
