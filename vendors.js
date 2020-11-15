@@ -5,4 +5,3 @@
 
 import 'react'
 import 'react-dom'
-import '@loadable/component'
