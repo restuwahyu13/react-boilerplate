@@ -1,3 +1,4 @@
+import React from 'react'
 import { configure, shallow, mount, render } from 'enzyme'
 import { renderHook, act, addClear, cleanup } from '@testing-library/react-hooks'
 import { createSerializer, toJson } from 'enzyme-to-json'
@@ -6,6 +7,7 @@ import renderer from 'react-test-renderer'
 
 configure({ adapter: new Adapter() })
 
+global.React = React
 global.shallow = shallow
 global.mount = mount
 global.render = render
