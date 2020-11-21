@@ -4,7 +4,7 @@
 
 <img src="./cover.png" width="1024" height="500" alt="logo-react" style="position:relative; margin: auto; padding:10px">
 
-<img src="./webtest.png" width="1024" height="200" alt="logo-react" style="position:relative; margin: auto; padding:10px">
+<img src="./webtest.png" width="1024" height="500" alt="logo-react" style="position:relative; margin: auto; padding:10px">
 
 #### Run Application
 
