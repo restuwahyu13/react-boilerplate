@@ -331,12 +331,5 @@ module.exports = {
 		concatenateModules: true,
 		removeEmptyChunks: true
 	},
-	stats: {
-		assetsSort: '!size',
-		entrypoints: false,
-		cached: false,
-		children: false,
-		modules: false,
-		warnings: false
-	}
+	stats: 'error-only'
 }

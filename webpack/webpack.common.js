@@ -12,9 +12,7 @@ module.exports = {
   },
   output: {
     path: resolve(process.cwd(), 'build'),
-		libraryTarget: 'umd',
-    globalObject: 'typeof self !== "undefined" ? self : this',
-		publicPath: '/'
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -120,7 +118,7 @@ module.exports = {
   ],
   resolve: {
     modules: [resolve(process.cwd(), 'src'), 'node_modules'],
-    extensions: ['.js','.jsx','.css','.scss','.sass'],
+    extensions: ['.js', '.jsx', '.css', '.scss', '.sass'],
     symlinks: false,
     cacheWithContext: false
   },

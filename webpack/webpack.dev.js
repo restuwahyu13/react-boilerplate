@@ -117,5 +117,5 @@ module.exports = {
     port: process.env.PORT || 3000,
     liveReload: false
   },
-	stats: false
+  stats: 'none'
 }
