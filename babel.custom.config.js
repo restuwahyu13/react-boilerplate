@@ -19,23 +19,23 @@ const isProdPlugin = [
 
 exports.isProdDevPlugin = [
   '@babel/plugin-proposal-class-properties',
-  '@babel/plugin-proposal-optional-chaining',
   '@babel/plugin-proposal-nullish-coalescing-operator',
+  '@babel/plugin-proposal-optional-chaining',
   '@babel/plugin-transform-async-to-generator',
   '@babel/plugin-transform-react-constant-elements',
   '@babel/plugin-transform-react-inline-elements',
   '@babel/plugin-transform-shorthand-properties',
   '@babel/plugin-transform-react-jsx-self',
+  '@babel/plugin-syntax-dynamic-import',
   'babel-plugin-transform-inline-consecutive-adds',
   'babel-plugin-minify-constant-folding',
   'babel-plugin-minify-flip-comparisons',
-  '@babel/plugin-syntax-dynamic-import',
   'react-html-attrs',
   ['import-graphql', { extensions: ['.graphql', '.gql'] }],
+  ['styled-jsx/babel', { optimizeForSpeed: true }],
   ['@babel/plugin-transform-runtime', { corejs: 3 }],
   ['babel-plugin-graphql-tag', { onlyMatchImportSuffix: true, strip: true }],
-  ['babel-plugin-styled-components', { ...optionBabelStyleComponent }],
-  ['styled-jsx/babel', { optimizeForSpeed: true }]
+  ['babel-plugin-styled-components', { ...optionBabelStyleComponent }]
 ]
 
 exports.isPlugins = process.env.NODE_ENV !== 'production' ? isDevPlugin : isProdPlugin

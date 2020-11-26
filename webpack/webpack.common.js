@@ -113,12 +113,12 @@ module.exports = {
     }),
     new ScriptExtHtmlWebpackPlugin({
       async: /\.js$/,
-      preload: /\.js$/
+      preload: /\.(js|css)$/
     })
   ],
   resolve: {
     modules: [resolve(process.cwd(), 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.css', '.scss', '.sass'],
+    extensions: ['.js', '.jsx', '.css', '.scss'],
     symlinks: false,
     cacheWithContext: false
   },

@@ -16,7 +16,7 @@
     "images/broken": true,
     "images/prefer-data-uri": 256,
     "csstree/validator": true,
-    "indentation": "tab",
+    "indentation": null,
     "max-empty-lines": 2,
     "font-family-no-duplicate-names": true,
     "function-calc-no-invalid": true,

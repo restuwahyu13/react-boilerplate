@@ -4,10 +4,14 @@ const postcssFlexbox = require('postcss-flexbugs-fixes')
 const postcssPresetEnv = require('postcss-preset-env')
 const postcssNano = require('cssnano')
 const postcssStyleLint = require('stylelint')
-const postcssClean = require('postcss-clean')
+const postcssNormalize = require('postcss-normalize')
 
 module.exports = {
   plugins: [
+    postcssNormalize({
+      allowDuplicates: false,
+      forceImport: true
+    }),
     postcssFlexbox({ bug4: false }),
     postcssImport({ root: process.cwd(), path: path.resolve(process.cwd(), 'src') }),
     postcssPresetEnv({
@@ -25,14 +29,6 @@ module.exports = {
     postcssStyleLint({
       fix: true,
       configFile: path.resolve(__dirname, '.stylelintrc')
-    }),
-    postcssClean({
-      format: 'beautify',
-      level: {
-        2: {
-          all: true
-        }
-      }
     })
   ]
 }

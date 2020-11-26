@@ -1,6 +1,6 @@
 {
   "jsxSingleQuote": true,
-  "printWidth": 120,
+  "printWidth": 130,
   "quoteProps": "as-needed",
   "bracketSpacing": true,
   "singleQuote": true,

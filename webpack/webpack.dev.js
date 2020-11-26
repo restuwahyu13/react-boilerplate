@@ -1,6 +1,5 @@
 const { resolve } = require('path')
 const { existsSync } = require('fs')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { WebpackLogCompiler } = require('./addons/webpack.log')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
@@ -31,10 +30,7 @@ module.exports = {
         test: /\.(scss|sass)$/,
         use: [
           {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('node-sass')
-            }
+            loader: 'sass-loader'
           }
         ]
       },
@@ -86,7 +82,7 @@ module.exports = {
       cacheGroups: {
         vendors: {
           name: 'vendors',
-          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          test: /[\\/]node_modules[\\/]/,
           chunks: 'all',
           enforce: true
         },

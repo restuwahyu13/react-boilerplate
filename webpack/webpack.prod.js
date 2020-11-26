@@ -1,12 +1,9 @@
 const { resolve } = require('path')
 const zlib = require('zlib')
-const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TenserWebpackPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
 const { GenerateSW } = require('workbox-webpack-plugin')
 const ThreeShakingWebpackPlugin = require('webpack-common-shake').Plugin
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin')
@@ -16,9 +13,6 @@ const WebpackProgressBar = require('webpackbar')
 
 module.exports = {
 	mode: 'production',
-	entry: {
-		vendors: resolve(process.cwd(), 'vendors.js')
-	},
 	output: {
 		filename: 'static/js/[name].bundle.[contenthash].js',
 		chunkFilename: 'static/js/[id].chunk.[contenthash].js'
@@ -40,9 +34,7 @@ module.exports = {
 						loader: 'postcss-loader',
 						options: {
 							ident: 'postcss',
-							config: {
-								path: resolve(process.cwd(), 'postcss.config.js')
-							},
+							config: { path: resolve(process.cwd(), 'postcss.config.js') },
 							sourceMap: true
 						}
 					}
@@ -54,7 +46,6 @@ module.exports = {
 					{
 						loader: 'sass-loader',
 						options: {
-							implementation: require('node-sass'),
 							sassOptions: { outputStyle: 'compressed' },
 							sourceMap: true
 						}
@@ -205,69 +196,6 @@ module.exports = {
 			clientsClaim: true,
 			skipWaiting: true,
 			cleanupOutdatedCaches: true
-		}),
-		new CompressionPlugin({
-			filename: '[path].br[query]',
-			test: /\.(js|css|html|json)$/,
-			algorithm: 'brotliCompress',
-			compressionOptions: {
-				level: 11,
-				strategy: zlib.constants.Z_RLE
-			},
-			threshold: 5120,
-			minRatio: Number.MAX_SAFE_INTEGER,
-			cache: false,
-			exclude: [
-				'/(node_modules|bower_components)/',
-				'/.(test.js|spec.js)/$',
-				resolve(process.cwd(), 'build/**/*'),
-				resolve(process.cwd(), 'public/**/*'),
-				resolve(process.cwd(), 'webpack/**/*'),
-				resolve(process.cwd(), '.github/**/*'),
-				resolve(process.cwd(), 'coverage/**/*')
-			]
-		}),
-		new CompressionPlugin({
-			filename: '[path].br[query]',
-			test: /\.(jp?g|png|svg|gif|raw|webp)$/,
-			algorithm: 'brotliCompress',
-			compressionOptions: {
-				level: 11,
-				strategy: zlib.constants.Z_RLE
-			},
-			threshold: 5120,
-			minRatio: Number.MAX_SAFE_INTEGER,
-			cache: false,
-			exclude: [
-				'/(node_modules|bower_components)/',
-				'/.(test.js|spec.js)/$',
-				resolve(process.cwd(), 'build/**/*'),
-				resolve(process.cwd(), 'public/**/*'),
-				resolve(process.cwd(), 'webpack/**/*'),
-				resolve(process.cwd(), '.github/**/*'),
-				resolve(process.cwd(), 'coverage/**/*')
-			]
-		}),
-		new CompressionPlugin({
-			filename: '[path].br[query]',
-			test: /\.(woff|woff2|eot|ttf|otf)$/,
-			algorithm: 'brotliCompress',
-			compressionOptions: {
-				level: 11,
-				strategy: zlib.constants.Z_RLE
-			},
-			threshold: 5120,
-			minRatio: Number.MAX_SAFE_INTEGER,
-			cache: false,
-			exclude: [
-				'/(node_modules|bower_components)/',
-				'/.(test.js|spec.js)/$',
-				resolve(process.cwd(), 'build/**/*'),
-				resolve(process.cwd(), 'public/**/*'),
-				resolve(process.cwd(), 'webpack/**/*'),
-				resolve(process.cwd(), '.github/**/*'),
-				resolve(process.cwd(), 'coverage/**/*')
-			]
 		})
 	],
 	optimization: {
@@ -300,18 +228,12 @@ module.exports = {
 					resolve(process.cwd(), '.github/**/*'),
 					resolve(process.cwd(), 'coverage/**/*')
 				]
-			}),
-			new OptimizeCssAssetsPlugin({
-				cssProcessor: require('cssnano'),
-				cssProcessorPluginOptions: {
-					preset: ['advanced', { discardComments: { removeAll: true }, convertValues: { precision: true } }]
-				}
 			})
 		],
 		splitChunks: {
 			cacheGroups: {
 				vendors: {
-					name: 'vendors',
+					name: false,
 					test: /[\\/]node_modules[\\/]/,
 					chunks: 'all',
 					enforce: true
@@ -331,5 +253,5 @@ module.exports = {
 		concatenateModules: true,
 		removeEmptyChunks: true
 	},
-	stats: 'error-only'
+	stats: 'errors-only'
 }

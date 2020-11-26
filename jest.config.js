@@ -2,7 +2,9 @@ module.exports = {
   testMatch: [
     '<rootDir>/src/**/*.{test.js, spec.js}',
     '<rootDir>/test/**/*.{test.js, spec.js}',
-    '<rootDir>/__test__/**/*.{test.js, spec.js}'
+    '<rootDir>/tests/**/*.{test.js, spec.js}',
+    '<rootDir>/__test__/**/*.{test.js, spec.js}',
+    '<rootDir>/__tests__/**/*.{test.js, spec.js}'
   ],
   collectCoverageFrom: ['src/**/*.{js, jsx}'],
   setupFiles: ['<rootDir>/enzyme.config.js'],
