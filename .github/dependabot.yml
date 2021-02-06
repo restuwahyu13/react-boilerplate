@@ -1,8 +1,16 @@
 version: 2
 updates:
-  - package-ecosystem: npm
+  - package-ecosystem: 'npm'
     directory: '/'
+    target-branch: 'main'
     schedule:
-      interval: daily
-      time: '20:00'
-    open-pull-requests-limit: 15
+      interval: 'weekly'
+      day: 'monday'
+      time: '19:00'
+      timezone: 'Asia/Jakarta'
+    commit-message:
+      prefix: 'dependencies'
+      prefix-development: 'devDependencies'
+      include: 'scope'
+    open-pull-requests-limit: 5
+    versioning-strategy: 'increase-if-necessary'
